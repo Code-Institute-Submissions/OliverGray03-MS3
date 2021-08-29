@@ -1,0 +1,19 @@
+.headings {
+    background-color: #3ca542;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.brand-logo {
+    margin-left: 10px;
+}
+
+nav .brand-logo i,
+nav .brand-logo [class^="mdi-"],
+nav .brand-logo [class*="mdi-"],
+nav .brand-logo i.material-icons {
+    float: none;
+}
+
+.side-nav {
+    color: #3ca542;
+}
