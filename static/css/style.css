@@ -25,6 +25,48 @@ nav .brand-logo i.material-icons {
     font-family: 'Noto Sans JP', sans-serif;
 }
 
+/*------Footer------*/
+.page-footer {
+    background-color: #3ca542;
+    font-family: 'Noto Sans JP', sans-serif;
+    padding-top: 0px;
+}
+
+.footer-row {
+    margin-bottom: 0px;
+}
+
+.social-links {
+    color: white;
+    display: inline-flex;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.social-links li a {
+    margin: 30px;
+    font-size: 40px;
+}
+
+.social-links li a {
+    color: white;
+}
+
+.social-links i:hover {
+    color: black;
+}
+
+.footer-copyright {
+    background-color: rgba(0, 0, 0, 0.15);
+    color: white;
+}
+
+
+/*-------Register page -----------*/
+
 .register-login {
     color: #3ca542;
 }
