@@ -46,9 +46,23 @@
             <li><a href="">Profile</a></li>
         </ul>
     </header>
+    <section>
+        <!--Flash Message-->
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="row flashes">
+            <h4 class="headings-dark center-align yellow lighten-3">{{message}}</h4>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </section>
 
-    {% block content %}
-    {% endblock %}
+    <main class="page-container">
+        {% block content %}
+        {% endblock %}
+    </main>
 
     <footer class="page-footer center-align">
         <div class="container">

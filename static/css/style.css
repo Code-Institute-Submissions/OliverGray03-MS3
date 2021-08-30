@@ -25,6 +25,10 @@ nav .brand-logo i.material-icons {
     font-family: 'Noto Sans JP', sans-serif;
 }
 
+.flashes h4 {
+    line-height: 2;
+}
+
 /*------Footer------*/
 .page-footer {
     background-color: #3ca542;
@@ -64,6 +68,15 @@ nav .brand-logo i.material-icons {
     color: white;
 }
 
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
 
 /*-------Register page -----------*/
 
@@ -84,8 +97,8 @@ nav .brand-logo i.material-icons {
 }
 
 .register-bg-image {
-    min-height: 94vh;
-    width: 100vw;
+    min-height: 100%;
+    width: 100%;
     margin: 0;
     background-image: url(/static/images/register-bg-image.jpg);
     background-size: cover;
