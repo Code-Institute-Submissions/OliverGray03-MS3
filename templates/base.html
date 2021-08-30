@@ -20,15 +20,15 @@
     <header>
         <!----Top nav bar-->
         <nav>
-            <div class="nav-wrapper headings">
-                <a href="#!" class="brand-logo">Ex Planta <i class="center-align fas fa-leaf"></i></a>
+            <div class="nav-wrapper nav-headings">
+                <a href="#" class="brand-logo">Ex Planta <i class="center-align fas fa-leaf"></i></a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-hamburger"></i></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="">Home</a></li>
+                    <li><a href="{{ url_for('get_recipe') }}">Home</a></li>
                     <li><a href="">Recipies</a></li>
                     <li><a href="">Log In</a></li>
                     <li><a href="">Log Out</a></li>
-                    <li><a href="">Register</a></li>
+                    <li><a href="{{ url_for('register') }}">Register</a></li>
                     <li><a href="">Profile</a></li>
                 </ul>
             </div>
@@ -39,10 +39,10 @@
                 <h4 class=" side-nav center-align">Ex Palnta <i class="fas fa-leaf"></i></h4>
             </li>
             <li><a href="">Home</a></li>
-            <li><a href="">Recipies</a></li>
+            <li><a href="{{ url_for('get_recipe') }}">Recipies</a></li>
             <li><a href="">Log In</a></li>
             <li><a href="">Log Out</a></li>
-            <li><a href="">Register</a></li>
+            <li><a href="{{ url_for('register') }}">Register</a></li>
             <li><a href="">Profile</a></li>
         </ul>
     </header>
