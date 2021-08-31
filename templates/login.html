@@ -5,23 +5,13 @@
     <div class="row">
         <div class="card-panel">
             <div class="row">
-                <h3 class="center headings">Register</h3>
+                <h3 class="center headings">Login</h3>
                 <div class="row">
-                    <form class="col s12" method="POST" action="{{ url_for('register') }}">
-                        <!---First name field -->
-                        <div class=" row">
-                            <div class="input-field col s10 offset-s1">
-                                <i class="fas fa-user prefix icons"></i>
-                                <input id="firstname" name="firstname" type="text" pattern="^[a-zA-Z]{2,20}$"
-                                    minlength="2" maxlength="20" class="validate content-light tooltipped"
-                                    data-position="bottom" pattern="^[a-zA-Z0-9]{2,20}$" required>
-                                <label class="content-light" for="firstname">First Name</label>
-                            </div>
-                        </div>
+                    <form class="col s12" method="POST" action="{{ url_for('login') }}">
                         <!---Username field-->
                         <div class="row">
                             <div class="input-field col s10 offset-s1">
-                                <i class="fas fa-user-plus prefix icons"></i>
+                                <i class="fas fa-user-cog prefix icons"></i>
                                 <input id="username" name="username" type="text" pattern="^[a-zA-Z0-9]{5,20}$"
                                     minlength="5" maxlength="15" class="validate content-light tooltipped"
                                     data-position="bottom" pattern="^[a-zA-Z0-9]{5,15}$" required>
@@ -46,9 +36,8 @@
                         </div>
                         <div class="row">
                             <div class="col s12">
-                                <p class="center-align content-styles">
-                                    Already Registered? <a href="{{ url_for('login') }}" class="register-login">Log
-                                        In</a>
+                                <p class="center-align content-light">
+                                    New Here? <a href="{{ url_for('register') }}">Register Account</a>
                                 </p>
                             </div>
                         </div>
@@ -58,5 +47,6 @@
         </div>
     </div>
 </div>
+
 
 {% endblock %}
