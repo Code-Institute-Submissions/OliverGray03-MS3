@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-
+<!-----Featured Carosel----->
 <div class="carousel carousel-slider center">
     <div class="carousel-fixed-item center">
         <a class="btn waves-effect white grey-text darken-text-2">button</a>
@@ -10,20 +10,69 @@
         <h2>First Panel</h2>
         <p class="white-text">This is your first panel</p>
     </div>
-    <div class="carousel-item amber white-text" href="#two!">
-        <h2>Second Panel</h2>
-        <p class="white-text">This is your second panel</p>
+</div>
+
+<!----About us------>
+
+<div class="container">
+    <div class="row">
+        <div class="col s12 m6 push-m6">
+            <h4 class="headings-dark text-margin">Ex Planta</h4>
+            <br>
+            <p class="">Ex Planta is all about sharing approachable vegan recipes that are healthy and easy
+                to make with whole food plant based ingredients. Whether you’re new to vegan cuisine or just looking for
+                inspiration, here you’ll find something for everyone!</p>
+        </div>
+        <div class="col s12 m6 pull-m6 center">
+            <img src="" alt="">
+        </div>
     </div>
-    <div class="carousel-item green white-text" href="#three!">
-        <h2>Third Panel</h2>
-        <p class="white-text">This is your third panel</p>
-    </div>
-    <div class="carousel-item blue white-text" href="#four!">
-        <h2>Fourth Panel</h2>
-        <p class="white-text">This is your fourth panel</p>
+    <br>
+    <div class="row">
+        <div class="col s12 m6 right-align">
+            <h4 class="headings-dark text-margin">Vegan on a budget</h4>
+            <hr class="headings-underline right">
+            <br>
+            <p class="">The latest in the One Pound Meals book series is all about easy plant-based meals that cost £1
+                or less per head to make using supermarket ingredients. From sticky peanut butter tofu to creamy
+                cauliflower tagliatelle, this book is full of clever ideas for everyday cooking on a budget.
+            </p>
+            <div class="row">
+                <a href="https://www.amazon.com/" class="waves-effect waves-light btn-small right">Available Here</a>
+            </div>
+
+        </div>
+        <div class="col s12 m6 center hide-on-small-only">
+            <img src="" alt="" class="">
+        </div>
     </div>
 </div>
-<h2>base template extension</h2>
+
+<!-----Sample recipes------->
+
+<div class="container">
+    <h3 class="center-align">Whats New?</h3>
+    <div class="row">
+        <div class="col s12 m6">
+            <div class="card">
+                <div class="card-image">
+                    <img src="images/sample-1.jpg">
+                    <span class="card-title">Card Title</span>
+                    <a class="btn-floating halfway-fab waves-effect waves-light red"><i
+                            class="material-icons">add</i></a>
+                </div>
+                <div class="card-content">
+                    <p>I am a very simple card. I am good at containing small bits of information. I am convenient
+                        because I require little markup to use effectively.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <a href="{{ url_for('get_recipe') }}" class="waves-effect waves-light btn-small right">Want to see more</a>
+    </div>
+</div>
+
 
 {% for recipe in recipe %}
 {{ recipe.recipe_name }}<br>

@@ -1,10 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2>base template extension</h2>
+<div class="row">
+    {% for recipe in recipes %}
+    <div class="col s12 m6">
+        <div class="card">
+            <div class="card-image">
+                <img src="{{ recipe.image }}" alt="{{ recipe.title }}">
+                <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="far fa-heart"></i></a>
+            </div>
+            <div class="card-content">
+                <p>{{ recipe.cook_time }}</p>
+            </div>
+            <div class="card-content">
+                <p>{{ recipe.difficulty }}</p>
+            </div>
+            <span class="card-title">{{ recipe.title }}</span>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 
-{% for recipe in recipe %}
-{{ recipe.recipe_name }}<br>
-{% endfor %}
+
 
 {% endblock %}
