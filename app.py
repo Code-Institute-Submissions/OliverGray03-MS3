@@ -31,6 +31,12 @@ def get_recipe():
     return render_template("recipe.html", recipe=recipe)
 
 
+@app.route("/add_recipe")
+def add_recipe():
+    return render_template("add_recipe.html")
+
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":

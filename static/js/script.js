@@ -5,3 +5,7 @@ $(document).ready(function () {
         edge: "right"
     });
 });
+
+$(document).ready(function () {
+    $('select').formSelect();
+});
