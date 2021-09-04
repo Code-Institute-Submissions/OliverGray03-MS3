@@ -33,7 +33,29 @@ def get_recipe():
 
 @app.route("/add_recipe")
 def add_recipe():
-    return render_template("add_recipe.html")
+    if request.method == "POST":
+        is_gf_free = "on" if request.form.get("is_gf_free") else "off"
+        recipe = {
+            "category_name": request.form.get("category_name"),
+            "recipe_name": request.form.get("recipe_name"),
+            "servings": request.form.get("servings"),
+            "prep_time": request.form.get("prep_time"),
+            "cook_time": request.form.get("cook_time"),
+            "is_gf_free": gf_free,
+            "ingredients": request.form.getlist("ingredients"),
+            "recipe_method": request.form.getlist("recipe_method"),
+            "created_by": session["user"],
+            "difficulty": request.form.getlist("difficulty"),
+            "cuisine": request.form.get("cuisine")
+        }
+
+        mongo.db.recipe_detail.insert_one()
+        flash("Recipe Successfully Added")
+        return redirect(url_for("get_recipes"))
+        
+    categories = mongo.db.categories.find().sort("category_name", 1 )
+    difficulty = mongo.db.difficulty.find().sort("difficulty", 1 )
+    return render_template("add_recipe.html", categories=categories, difficulty=difficulty)
 
 
 
