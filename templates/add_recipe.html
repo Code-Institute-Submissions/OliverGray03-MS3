@@ -6,6 +6,7 @@
 <div class="row">
     <div class="col s12 m8 offset-m2">
         <div class="card">
+            <p>Got a recipe you want others to know about. Use the below form to add the recipe to the website. </p>
             <form class="col s12" action="{{ url_for('add_recipe') }}" method="POST">
                 <div class="row">
                     <!----Recipe Name--->
@@ -30,7 +31,7 @@
                 <div class="row">
                     <div class="input-field col col s12 m6 l6">
                         <i class="fas fa-globe-europe prefix icons"></i>
-                        <input id="cuisine" type="text" class="validate">
+                        <input id="cuisine" type="text" class="validate" required>
                         <label for="cuisine">Cuisine</label>
                     </div>
                     <!----Servings--->
