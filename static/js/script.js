@@ -49,4 +49,39 @@ $(document).ready(function () {
             }
         });
     }
+
+    $("#add-ingredient").click(function () {
+        var clone = $("#ingredient-container_0").clone();
+        var ingredientContainers = $(".ingredient-container");
+        clone.attr("id", "ingredient-container_" + ingredientContainers.length);
+        clone.find("textarea").val("")
+        $("#ingredients-container").append(clone);
+        $("#remove-ingredient").show();
+    });
+
+    $("#remove-ingredient").click(function () {
+        var ingredientContainers = $(".ingredient-container");
+        ingredientContainers[ingredientContainers.length - 1].remove();
+
+        if (ingredientContainers.length === 2) {
+            $("#remove-ingredient").hide();
+        }
+    });
+
+    $("#remove-ingredient").hide();
+
+    /*
+    $("#confirm-password-error").hide();
+
+    $("#confirm-password").blur(function () {
+        debugger;
+        if ($(this).val() != $("#password").val()) {
+            //set custom error
+            $("#confirm-password-error").show();
+        }
+    })
+
+    $("#confirm-password").focus(function () {
+        $("#confirm-password-error").hide();
+    })*/
 });

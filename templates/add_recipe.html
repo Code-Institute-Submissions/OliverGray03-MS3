@@ -12,7 +12,7 @@
                     <!----Recipe Name--->
                     <div class="input-field col s12 m6 l6">
                         <i class="fas fa-edit prefix icons"></i>
-                        <input id="recipe_name" type="text" class="validate">
+                        <input id="recipe_name" name="recipe_name" type="text" class="validate">
                         <label for="recipe_name">Recipe Name</label>
                     </div>
                     <!----Category Name--->
@@ -31,7 +31,7 @@
                 <div class="row">
                     <div class="input-field col col s12 m6 l6">
                         <i class="fas fa-globe-europe prefix icons"></i>
-                        <input id="cuisine" type="text" class="validate" required>
+                        <input id="cuisine" name="cuisine" type="text" class="validate" required>
                         <label for="cuisine">Cuisine</label>
                     </div>
                     <!----Servings--->
@@ -65,19 +65,27 @@
                 <!----Ingredients--->
                 <div class="row">
                     <div class="col s12">
-                        <div class="row" id="ingredients-container">
-                            <div class="input-field first-item">
-                                <i class="fas fa-list prefix icons"></i>
-                                <textarea id="ingredients" name="ingredients" minlength="2" maxlength="100"
-                                    class="materialize-textarea validate tooltipped" data-position="bottom"
-                                    data-tooltip="e.g: 500g Chicken Breast" required></textarea>
-                                <label class="label-margin" for="ingredients">Ingredients</label>
+                        <div id="ingredients-container">
+                            <div class="row ingredient-container" id="ingredient-container_0">
+                                <div class="input-field">
+                                    <i class="fas fa-list prefix icons"></i>
+                                    <textarea id="ingredients" name="ingredients" minlength="2" maxlength="100"
+                                        class="materialize-textarea validate tooltipped" data-position="bottom"
+                                        data-tooltip="e.g: 500g Chicken Breast" required></textarea>
+                                    <label class="label-margin" for="ingredients">Ingredients</label>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col s12 center-align">
                                 <button type="button" class="btn" id="add-ingredient">Add
                                     Ingredient <i class="fas fa-plus-circle right"></i></button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 center-align">
+                                <button type="button" class="btn" id="remove-ingredient">Remove
+                                    Ingredient <i class="fas fa-minus-circle right"></i></button>
                             </div>
                         </div>
                     </div>
@@ -104,24 +112,22 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m6 l6">
-                        <i class="fas fa-utensils prefix icons"></i>
-                        <select id="difficulty" name="difficulty" class="validate">
-                            <option value="difficulty">Difficulty</option>
+                        <i class="fas fa-tachometer-alt prefix icons"></i>
+                        <select id="difficulty" name="difficulty" class="validate" required>
+                            <option value="difficulty" disabled selected>difficulty</option>
                             {% for difficulty in difficulty %}
                             <option value="{{ difficulty.difficulty }}">{{ difficulty.difficulty }}</option>
                             {% endfor %}
                         </select>
                         <label class="label-margin" for="difficulty">Difficulty</label>
                     </div>
-                </div>
-                <div class="row">
                     <!----GF Switch--->
                     <div class="input-field col s12 m6 l6">
                         <div class="switch">
                             <span class="switch-text">Gluten Free</span>
-                            <label for="gf-free" class="label-margin">
+                            <label for="gf_free" class="label-margin">
                                 <span class="switch-text-selector content-light">No</span>
-                                <input type="checkbox" id="gf-free" name="gf-free">
+                                <input type="checkbox" id="gf_free" name="gf_free">
                                 <span class="lever"></span>
                                 <span class="switch-text-selector">Yes</span>
                             </label>
@@ -130,7 +136,7 @@
                 </div>
                 <!----Submit form Button--->
                 <div class="row center-align">
-                    <button class="btn waves-effect waves-light" type="submit">Submit
+                    <button class="btn waves-effect waves-light" type="submit">Submit your recipe!
                         <i class="material-icons right"></i>
                     </button>
                 </div>
