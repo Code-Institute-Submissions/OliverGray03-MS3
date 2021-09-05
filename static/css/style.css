@@ -2,6 +2,7 @@
 
 .page-container {
     display: flex;
+    flex-direction: column;
 }
 
 .page-container>div {

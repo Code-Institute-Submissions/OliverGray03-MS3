@@ -27,8 +27,8 @@ def home():
 
 @app.route("/get_recipe")
 def get_recipe():
-    recipe = mongo.db.recipe_detail.find()
-    return render_template("recipe.html", recipe=recipe)
+    recipes = mongo.db.recipe_detail.find()
+    return render_template("get_recipe.html", recipes=recipes)
 
 
 @app.route("/add_recipe", methods=["GET", "POST"])
@@ -43,6 +43,7 @@ def add_recipe():
             "cook_time": request.form.get("cook_time"),
             "gf_free": gf_free,
             "ingredients": request.form.getlist("ingredients"),
+            "recipe_image": request.form.get("recipe_image"),
             "recipe_method": request.form.getlist("recipe_method"),
             "created_by": session["user"],
             "difficulty": request.form.getlist("difficulty"),
