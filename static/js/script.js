@@ -1,5 +1,3 @@
-// Nav bar initialization //
-
 $(document).ready(function () {
     $('.sidenav').sidenav({
         edge: "right"
@@ -7,6 +5,7 @@ $(document).ready(function () {
     $('.carousel').carousel();
     $(".tooltipped").tooltip();
     $('select').formSelect();
+
     // Validation for drop down options//
 
     validateMaterializeSelect();
@@ -50,6 +49,7 @@ $(document).ready(function () {
         });
     }
 
+    //Adds an ingredient to a list in add recipe form//
     $("#add-ingredient").click(function () {
         var clone = $("#ingredient-container_0").clone();
         var ingredientContainers = $(".ingredient-container");
@@ -68,6 +68,28 @@ $(document).ready(function () {
         }
     });
 
+
+    //Adds a method step to a list in add recipe form//
+
+    $("#add-method").click(function () {
+        var clone = $("#method-container_0").clone();
+        var methodContainers = $(".method-container");
+        clone.attr("id", "method-container_" + methodContainers.length);
+        clone.find("textarea").val("")
+        $("#methods-container").append(clone);
+        $("#remove-step").show();
+    });
+
+    $("#remove-step").click(function () {
+        var methodContainers = $(".method-container");
+        methodContainers[methodContainers.length - 1].remove();
+
+        if (methodContainers.length === 2) {
+            $("#remove-step").hide();
+        }
+    });
+
+    $("#remove-step").hide();
     $("#remove-ingredient").hide();
 
     /*

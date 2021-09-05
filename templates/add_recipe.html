@@ -4,9 +4,12 @@
 <br>
 <br>
 <div class="row">
+    <br>
+    <br>
     <div class="col s12 m8 offset-m2">
         <div class="card">
-            <p>Got a recipe you want others to know about. Use the below form to add the recipe to the website. </p>
+            <p class="center-align">Got a recipe you want others to know about. Use the below form to add the recipe to
+                the website. </p>
             <form class="col s12" action="{{ url_for('add_recipe') }}" method="POST">
                 <div class="row">
                     <!----Recipe Name--->
@@ -93,19 +96,28 @@
                 <!----Method--->
                 <div class="row">
                     <div class="col s12">
-                        <div class="row" id="method-container">
-                            <div class="input-field first-item">
-                                <i class="fas fa-mug-hot prefix icons"></i>
-                                <textarea id="recipe_method" name="recipe_method" minlength="10" maxlength="500"
-                                    class="materialize-textarea validate tooltipped" data-position="bottom"
-                                    data-tooltip="Click 'Add Step' button for each step" required></textarea>
-                                <label class="headings-light label-margin" for="recipe_method">Method</label>
+                        <div id="methods-container">
+                            <div class="row method-container" id="method-container_0">
+                                <div class="input-field">
+                                    <i class="fas fa-list prefix icons"></i>
+                                    <textarea id="method" name="method" minlength="2" maxlength="100"
+                                        class="materialize-textarea validate tooltipped" data-position="bottom"
+                                        data-tooltip="e.g: Cut the chicken breast into small chunks"
+                                        required></textarea>
+                                    <label class="label-margin" for="method">Method</label>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col s12 center-align">
-                                <button type="button" class="btn" id="add-step">Add Step <i
-                                        class="fas fa-plus-circle right"></i></button>
+                                <button type="button" class="btn" id="add-method">Add
+                                    Step <i class="fas fa-plus-circle right"></i></button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 center-align">
+                                <button type="button" class="btn" id="remove-step">Remove
+                                    Step <i class="fas fa-minus-circle right"></i></button>
                             </div>
                         </div>
                     </div>
