@@ -126,3 +126,21 @@ main {
     margin-top: 80px;
     background-color: rgba(0, 0, 0, 0.03);
 }
+
+/*------ Card styling--------*/
+.card-image {
+    overflow: hidden;
+}
+
+.card .card-image img {
+    height: 300px;
+    width: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -webkit-transition: -webkit-transform 2s ease;
+    transition: -webkit-transform 2s ease;
+    -o-transition: transform 2s ease;
+    transition: transform 2s ease;
+    transition: transform 2s ease, -webkit-transform 2s ease;
+
+}
