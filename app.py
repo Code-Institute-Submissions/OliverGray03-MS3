@@ -25,6 +25,17 @@ def home():
     return render_template("home.html")
 
 
+#@app.route("/get_recipe/<recipe_id>")
+#def get_recipe(recipe_id):
+#    """
+#    Returns the recipe page for a specific recipe id
+#    """
+#    recipe = mongo.db.recipe_detail.find_one({"_id": ObjectId(recipe_id)})
+#    return render_template(
+#        "get_recipe.html",
+#        recipes=recipes)
+
+
 @app.route("/get_recipe")
 def get_recipe():
     recipes = mongo.db.recipe_detail.find()
@@ -134,6 +145,13 @@ def profile(username):
         return render_template("profile.html", username=username)
 
     return redirect(url_for("login"))
+
+
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    tasks = list(mongo.db.recipe_detail.find({"$text": {"$search": query}}))
+    return render_template("get_recipe.html", recipes=recipes)
 
 
 if __name__ == "__main__":

@@ -5,8 +5,8 @@
     flex-direction: column;
 }
 
-.page-container>div {
-    width: 100%;
+.register-bg-image {
+    flex: 1;
 }
 
 .icons {
