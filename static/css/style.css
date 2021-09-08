@@ -144,3 +144,30 @@ main {
     transition: transform 2s ease, -webkit-transform 2s ease;
 
 }
+
+/*-----Home page----*/
+.cookbook-image {
+    width: 200px;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position-y: 0px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.home-text-left {
+    text-align: left;
+}
+
+.home-headings {
+    font-size: 30px;
+    font-weight: 450;
+    letter-spacing: 3.2px;
+}
+
+.cta-button {
+    margin: -30px;
+}
