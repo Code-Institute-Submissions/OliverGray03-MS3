@@ -4,32 +4,7 @@
 <br>
 
 <div class="row">
-    <h3>
-        All recipes
-    </h3>
-</div>
-<br>
-<div class="row card-panel">
-    <div class="col s12 l4 right">
-        <form action="{{ url_for('search') }}" method="post">
-            <div class="row valign-wrapper center-align">
-                <div class="input-field col s12 m8">
-                    <i class="fas fa-search"></i>
-                    <input type="text" name="query" id="query" class="validate" required>
-                    <label for="query">Search Recipies</label>
-                </div>
-                <div class="col s12 m4">
-                    <a href="{{ url_for('get_recipe') }}" class="red btn text-shadow">Reset</a>
-                    <button type="submit">
-                        <i class="fas fa-search left"></i>Search
-                    </button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-<div class="row">
-    {% for recipe in recipes %}
+
     <div class="col s12 m4">
         <div class="card">
             <div class="row card-image center-align">
@@ -46,19 +21,45 @@
                 </div>
                 <div class="card-content">
                     <i class="far fa-hourglass prefix icons card-icons"></i>
+                    <p>Cuisine: {{ recipe.cuisine }}</p>
+                </div>
+                <div class="card-content">
+                    <i class="far fa-hourglass prefix icons card-icons"></i>
                     <p>Cook Time: {{ recipe.cook_time }}</p>
+                </div>
+                <div class="card-content">
+                    <i class="far fa-hourglass prefix icons card-icons"></i>
+                    <p>Prep Time: {{ recipe.prep_time }}</p>
                 </div>
                 <div class="card-content">
                     <i class="fas fa-tachometer-alt prefix icons card-icons"></i>
                     <p>Difficulty: {{ recipe.difficulty }}</p>
                 </div>
-                <div class="row center-align">
-                    <p>See full recipe</p>
+                <div class="card-content">
+                    <i class="fas fa-tachometer-alt prefix icons card-icons"></i>
+                    <p>Ingredients:</p>
+                    <ul>
+                        {% for ingredient in recipe.ingredients %}
+                        <li>{{ ingredient }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="card-content">
+                    <i class="fas fa-tachometer-alt prefix icons card-icons"></i>
+                    <p>Method:</p>
+                    <ul>
+                        {% for step in recipe.method %}
+                        <li>{{ step }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="card-content">
+                    <i class="fas fa-tachometer-alt prefix icons card-icons"></i>
+                    <p>Created By: {{ recipe.created_by }}</p>
                 </div>
             </div>
         </div>
     </div>
-    {% endfor %}
 </div>
 
 {% endblock %}

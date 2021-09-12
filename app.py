@@ -35,18 +35,6 @@ def home():
         recipes=recipes)
 
 
-#@app.route("/get_recipe/<recipe_id>")
-#def get_recipe(recipe_id):
-
-#    """
-#    Returns the recipe page for a specific recipe id
-#    """
-#    recipe = mongo.db.recipe_detail.find_one({"_id": ObjectId(recipe_id)})
-#    return render_template(
-#        "get_recipe.html",
-#        recipes=recipes)
-
-
 @app.route("/get_recipe")
 def get_recipe():
     recipes = mongo.db.recipe_detail.find()
@@ -84,10 +72,12 @@ def add_recipe():
 @app.route("/full_recipe/<recipe_id>")
 def full_recipe(recipe_id):
     recipe = mongo.db.recipe_detail.find_one({"_id":ObjectId(recipe_id)})
-    return render_template(
-        "full_recipe.html",
-        recipe=recipe
-    )
+
+    if session["user"]:
+        return render_template(
+            "full_recipe.html",
+            recipe=recipe
+        )
 
 
 @app.route("/register", methods=["GET", "POST"])
