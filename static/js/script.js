@@ -3,6 +3,10 @@ $(document).ready(function () {
         edge: "right"
     });
     $('.carousel').carousel();
+    $('.carousel.carousel-slider').carousel({
+        fullWidth: true,
+        indicators: true
+    });
     $(".tooltipped").tooltip();
     $('select').formSelect();
 

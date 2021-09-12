@@ -1,5 +1,3 @@
-{% extends "base.html" %}
-{% block content %}
 
 <!-----Featured Carosel----->
 <div class="container-fluid carousel-container">
@@ -103,5 +101,3 @@
     <a href="{{ url_for('get_recipe') }}" class="waves-effect waves-light btn-small right">Explore
         more</a>
 </div>
-
-{% endblock %}

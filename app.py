@@ -24,10 +24,11 @@ mongo = PyMongo(app)
 @app.route("/")
 def home():
     carousel_recipes = list(
-        mongo.db.recipes.find({"created_by": "admin"}))
+        mongo.db.recipe_detail.find({"created_by": "admin"}))
     random.shuffle(carousel_recipes)
+    
+    recipes = list(mongo.db.recipe_detail.find())
 
-    recipes = mongo.db.recipe_detail.find()
     return render_template(
         "home.html",
         carousel_recipes=carousel_recipes,
@@ -36,6 +37,7 @@ def home():
 
 #@app.route("/get_recipe/<recipe_id>")
 #def get_recipe(recipe_id):
+
 #    """
 #    Returns the recipe page for a specific recipe id
 #    """
