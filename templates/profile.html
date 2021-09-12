@@ -1,17 +1,56 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="row">
-    <div class="col s12 m6">
-        <div class="card">
-            <div class="card-content">
-                <h3 class="center-align">
-                    {{ username }}'s profile
-                </h3>
+<div class="container">
+    <div class="row">
+        <div class="col s12 m8">
+            <div class="card">
+                <div class="card-content">
+                    <i class="fas fa-users prefix icons"></i>
+                    <h3 class="center-align">
+                        {{ username }}'s profile
+                    </h3>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="col s12">
+        <h4 class="home-headings">{{ username }}'s Recipes</h4>
+    </div>
+    <div class="row">
+        {% for recipe in recipes %}
+        <div class="col s12 m4">
+            <div class="card">
+                <div class="row card-image center-align">
+                    <img src="{{recipe.recipe_image}}" alt="{{recipe.title}}">
+                    <a class="btn-floating halfway-fab red"><i class="far fa-heart"></i></a>
+                </div>
+                <div class="row">
+                    <h3 class="card-title center-align">{{ recipe.recipe_name }}</h3>
+                </div>
+                <div class="row">
+                    <div class="card-content">
+                        <i class="fas fa-users prefix icons"></i>
+                        <p>Servings: {{ recipe.servings }}</p>
+                    </div>
+                    <div class="card-content">
+                        <i class="far fa-hourglass prefix icons"></i>
+                        <p>Cook Time: {{ recipe.cook_time }}</p>
+                    </div>
+                </div>
+                <div class="row center-align">
+                    <i class="fas fa-tachometer-alt prefix icons"></i>
+                    <p>Difficulty: {{ recipe.difficulty }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+
 
 
 {% endblock %}

@@ -1,4 +1,5 @@
 import os
+import random
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -22,8 +23,15 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def home():
+    carousel_recipes = list(
+        mongo.db.recipes.find({"created_by": "admin"}))
+    random.shuffle(carousel_recipes)
+
     recipes = mongo.db.recipe_detail.find()
-    return render_template("home.html", recipes=recipes)
+    return render_template(
+        "home.html",
+        carousel_recipes=carousel_recipes,
+        recipes=recipes)
 
 
 #@app.route("/get_recipe/<recipe_id>")
@@ -141,9 +149,14 @@ def profile(username):
     # grab the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
+    
+    recipe = list(mongo.db.recipes.find({"created_by": session['user']}))
 
     if session["user"]:
-        return render_template("profile.html", username=username)
+        return render_template(
+            "profile.html",
+            username=username,
+            recipe=recipe)
 
     return redirect(url_for("login"))
 

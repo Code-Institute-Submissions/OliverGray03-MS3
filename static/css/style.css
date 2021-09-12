@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap');
 
+
+.col .row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
 .page-container {
     display: flex;
     flex-direction: column;
@@ -142,10 +148,45 @@ main {
     -o-transition: transform 2s ease;
     transition: transform 2s ease;
     transition: transform 2s ease, -webkit-transform 2s ease;
+}
 
+.card-icons {
+    float: left;
+    width: 4rem;
+    font-size: 1.7rem;
+    top: .5rem;
+}
+
+.card-content {
+    font-family: 'Noto Sans JP', sans-serif;
+    color: black;
+    font-size: 1rem;
+    font-weight: 150;
+    letter-spacing: 1.5px;
+}
+
+.card-title {
+    font-family: 'Noto Sans JP', sans-serif;
+    color: black;
+    font-size: 1.2rem;
+    font-weight: 150;
+    letter-spacing: 1.5px;
+    height: 45px;
 }
 
 /*-----Home page----*/
+
+.carousel.carousel-slider .carousel-item h2 {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 34px;
+    line-height: 32px;
+    font-size: 3rem;
+    font-weight: 400;
+    color: white;
+    margin-left: 25px;
+}
+
+
 .cookbook-image {
     width: 200px;
     height: 200px;

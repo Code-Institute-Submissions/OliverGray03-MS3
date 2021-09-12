@@ -2,13 +2,16 @@
 {% block content %}
 
 <!-----Featured Carosel----->
-<div class="carousel carousel-slider center">
-    <div class="carousel-fixed-item center">
-        <a class="btn waves-effect white grey-text darken-text-2">button</a>
-    </div>
-    <div class="carousel-item red white-text" href="#one!">
-        <h2>First Panel</h2>
-        <p class="white-text">This is your first panel</p>
+<div class="container-fluid carousel-container">
+    <div class="carousel carousel-slider center">
+        <div class="carousel-fixed-item center">
+            <a class="btn waves-effect white grey-text darken-text-2">View Recipe</a>
+        </div>
+        {% for recipe in carousel_recipes %}
+        <div class="carousel-item" style="background-image: url( {{recipe.recipe_image}} );">
+            <h2 class="carousel-text">{{ recipe.recipe_name }}</h2>
+        </div>
+        {% endfor %}
     </div>
 </div>
 
@@ -73,20 +76,23 @@
             </div>
             <div class="row">
                 <h3 class="card-title center-align">{{ recipe.recipe_name }}</h3>
-            </div>z
+            </div>
             <div class="row">
                 <div class="card-content">
-                    <i class="fas fa-users prefix icons"></i>
+                    <i class="fas fa-users prefix icons card-icons"></i>
                     <p>Servings: {{ recipe.servings }}</p>
                 </div>
                 <div class="card-content">
-                    <i class="far fa-hourglass prefix icons"></i>
+                    <i class="far fa-hourglass prefix icons card-icons"></i>
                     <p>Cook Time: {{ recipe.cook_time }}</p>
+                </div>
+                <div class="card-content">
+                    <i class="fas fa-tachometer-alt prefix icons card-icons"></i>
+                    <p>Difficulty: {{ recipe.difficulty }}</p>
                 </div>
             </div>
             <div class="row center-align">
-                <i class="fas fa-tachometer-alt prefix icons"></i>
-                <p>Difficulty: {{ recipe.difficulty }}</p>
+                <p>See full recipe</p>
             </div>
         </div>
     </div>
@@ -94,7 +100,7 @@
     {% endfor %}
 </div>
 <div class="row right-align">
-    <a href="{{ url_for('get_recipe') }}" target="_blank" class="waves-effect waves-light btn-small right">Explore
+    <a href="{{ url_for('get_recipe') }}" class="waves-effect waves-light btn-small right">Explore
         more</a>
 </div>
 
