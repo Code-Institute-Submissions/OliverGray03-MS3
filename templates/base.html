@@ -21,8 +21,10 @@
         <!----Top nav bar-->
         <nav>
             <div class="nav-wrapper nav-headings">
-                <a href="#" class="brand-logo">Ex Planta <i class="center-align fas fa-leaf"></i></a>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-hamburger"></i></a>
+                <a href="{{ url_for('home') }}" class="brand-logo">Ex Planta <i
+                        class="center-align fas fa-leaf"></i></a>
+                <a href="{{ url_for('home') }}" data-target="mobile-demo" class="sidenav-trigger right"><i
+                        class="fas fa-hamburger"></i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ url_for('home') }}">Home</a></li>
                     <li><a href="{{ url_for('get_recipe') }}">Recipies</a></li>

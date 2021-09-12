@@ -56,10 +56,11 @@
 </div>
 
 <!-----Sample recipes------->
-
+<br>
 <div class="home-headings center-align">
-    <h4>Whats New ?</h4>
+    <h4>Whats New</h4>
 </div>
+<br>
 <br>
 <div class="row">
     {% for recipe in recipes %}
@@ -72,7 +73,7 @@
             </div>
             <div class="row">
                 <h3 class="card-title center-align">{{ recipe.recipe_name }}</h3>
-            </div>
+            </div>z
             <div class="row">
                 <div class="card-content">
                     <i class="fas fa-users prefix icons"></i>
@@ -91,6 +92,10 @@
     </div>
     {% endif %}
     {% endfor %}
+</div>
+<div class="row right-align">
+    <a href="{{ url_for('get_recipe') }}" target="_blank" class="waves-effect waves-light btn-small right">Explore
+        more</a>
 </div>
 
 
