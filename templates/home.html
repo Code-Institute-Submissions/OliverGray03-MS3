@@ -92,7 +92,8 @@
                 </div>
             </div>
             <div class="row center-align">
-                <button href="{{ url_for('get_recipe') }}" class="btn full-recipe-btn">See full recipe</button>
+                <a href="{{ url_for('full_recipe', recipe_id=recipe._id) }}" class="btn full-recipe-btn">See full
+                    recipe</a>
             </div>
         </div>
     </div>

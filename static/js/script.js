@@ -95,19 +95,37 @@ $(document).ready(function () {
 
     $("#remove-step").hide();
     $("#remove-ingredient").hide();
-
-    /*
     $("#confirm-password-error").hide();
 
-    $("#confirm-password").blur(function () {
-        debugger;
-        if ($(this).val() != $("#password").val()) {
-            //set custom error
-            $("#confirm-password-error").show();
-        }
-    })
+    // checks to see whether the passwords match & shows or hides and error message whilst stopping the form from posting if false//
+    function validate() {
+        return $("#confirm-password").val() === $("#password").val();
+    }
 
-    $("#confirm-password").focus(function () {
+    function showError() {
+        $("#confirm-password-error").show();
+        $("#confirm-password").addClass("invalid");
+    }
+
+    function hideError() {
         $("#confirm-password-error").hide();
-    })*/
+        $("#confirm-password").addClass("valid");
+    }
+
+    $("#confirm-password").blur(function () {
+        if (!validate()) {
+            showError();
+        }
+    });
+
+    $("#confirm-password, #password").focus(function () {
+        hideError();
+    });
+
+    $("#register-button").click(function (e) {
+        if (!validate()) {
+            e.preventDefault();
+            showError();
+        }
+    });
 });

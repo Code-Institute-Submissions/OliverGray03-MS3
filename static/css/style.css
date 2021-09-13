@@ -133,6 +133,10 @@ main {
     background-color: rgba(0, 0, 0, 0.03);
 }
 
+#confirm-password-error {
+    color: red;
+}
+
 /*------ Card styling--------*/
 .card-image {
     overflow: hidden;

@@ -150,7 +150,7 @@ def profile(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
     
-    recipe = list(mongo.db.recipes.find({"created_by": session['user']}))
+    recipe = list(mongo.db.recipe_detail.find({"created_by": session['user']}))
 
     if session["user"]:
         return render_template(

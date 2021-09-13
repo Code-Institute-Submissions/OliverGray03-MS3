@@ -53,7 +53,8 @@
                     <p>Difficulty: {{ recipe.difficulty }}</p>
                 </div>
                 <div class="row center-align">
-                    <p>See full recipe</p>
+                    <a href="{{ url_for('full_recipe', recipe_id=recipe._id) }}" class="btn full-recipe-btn">See full
+                        recipe</a>
                 </div>
             </div>
         </div>

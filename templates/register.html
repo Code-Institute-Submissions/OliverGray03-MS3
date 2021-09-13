@@ -38,20 +38,21 @@
                                 <label class="content-light" for="password">Password</label>
                             </div>
                         </div>
-                        <!---<div class="row">
+                        <div class="row">
                             <div class="input-field col s10 offset-s1">
                                 <i class="fas fa-user-lock prefix icons"></i>
-                                <input id="confirm-password" type="password" pattern="^[a-zA-Z0-9]{5,20}$" minlength="5"
-                                    maxlength="15" class="validate" data-position="bottom" pattern="^[a-zA-Z0-9]{5,15}$"
-                                    required>
-                                <label class="content-light" for="password">Confirm Password</label>
-                                <span class="helper-text" id="confirm-password-error"
-                                    data-error="Passwords must match"></span>
+                                <input id="confirm-password" type="password" name="confirm-password"
+                                    pattern="^[a-zA-Z0-9]{5,20}$" minlength="5" maxlength="15" class="validate"
+                                    data-position="bottom" pattern="^[a-zA-Z0-9]{5,15}$" required>
+                                <label class="content-light" for="confirm-password">Confirm Password</label>
+                                <span class="" id="confirm-password-error">Password and confirm password must
+                                    match</span>
                             </div>
-                        </div>-->
+                        </div>
                         <!---Register button-->
                         <div class="row">
-                            <button type="submit" class="col s6 offset-s3 m4 offset-m4 btn-large buttons">
+                            <button type="submit" id="register-button"
+                                class="col s6 offset-s3 m4 offset-m4 btn-large buttons">
                                 Register <i class="fas fa-sign-in-alt"></i>
                             </button>
                         </div>
