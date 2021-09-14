@@ -54,7 +54,7 @@ def add_recipe():
             "gf_free": gf_free,
             "ingredients": request.form.getlist("ingredients"),
             "recipe_image": request.form.get("recipe_image"),
-            "recipe_method": request.form.getlist("recipe_method"),
+            "recipe_method": request.form.getlist("method"),
             "created_by": session["user"],
             "difficulty": request.form.getlist("difficulty"),
             "cuisine": request.form.get("cuisine")
@@ -71,7 +71,7 @@ def add_recipe():
 
 @app.route("/full_recipe/<recipe_id>")
 def full_recipe(recipe_id):
-    recipe = mongo.db.recipe_detail.find_one({"_id":ObjectId(recipe_id)})
+    recipe = mongo.db.recipe_detail.find_one({"_id" :ObjectId(recipe_id)})
 
     if session["user"]:
         return render_template(
@@ -89,6 +89,7 @@ def register():
 
         # if username already exists: flash message
         if existing_user:
+
             flash("Username already exists")
             return redirect(url_for("register"))
 
@@ -150,21 +151,44 @@ def profile(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
     
-    recipe = list(mongo.db.recipe_detail.find({"created_by": session['user']}))
+    recipes = list(mongo.db.recipe_detail.find({"created_by": session['user']}))
 
     if session["user"]:
         return render_template(
             "profile.html",
             username=username,
-            recipe=recipe)
+            recipes=recipes)
 
     return redirect(url_for("login"))
+
+
+@app.route("/remove_profile")
+def remove_profile():
+
+    # removes the session user from the database
+    mongo.db.users.delete_one({"username": session["user"]})
+
+    # removes the user from the session
+    session.pop("user")
+    flash("Your profile has been succesfully deleted")
+    return redirect(url_for("register"))
+
+
+@app.route("/delete_recipe/<recipe_id>")
+def delete_recipe(recipe_id):
+    recipe = mongo.db.recipe_detail.find_one({"_id": ObjectId(recipe_id)})
+    created_by = recipe['created_by']
+    if session["user"] == "admin" or created_by == session["user"]:
+        mongo.db.recipes_detail.delete_one(recipe)
+        flash("Recipe Successfully Deleted")
+        return redirect(url_for("home"))
 
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
-    tasks = list(mongo.db.recipe_detail.find({"$text": {"$search": query}}))
+    recipes = list(mongo.db.recipe_detail.find({"$text": {"$search": query}}))
+    
     return render_template("get_recipe.html", recipes=recipes)
 
 

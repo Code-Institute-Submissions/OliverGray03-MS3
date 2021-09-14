@@ -159,6 +159,7 @@ main {
     width: 4rem;
     font-size: 1.7rem;
     top: .5rem;
+    margin: 11px;
 }
 
 .card-content {
@@ -167,6 +168,7 @@ main {
     font-size: 1rem;
     font-weight: 150;
     letter-spacing: 1.5px;
+    padding: 10px;
 }
 
 .card-title {
@@ -180,6 +182,10 @@ main {
 
 .full-recipe-btn {
     margin: 5px;
+}
+
+.list-style {
+    margin-bottom: 1em;
 }
 
 /*-----Home page----*/
