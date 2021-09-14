@@ -69,7 +69,8 @@
                 <div class="row">
                     <div class="col s12 center">
                         <div class="row right-align">
-                            <a href="" class="waves-effect waves-light btn-small right">Edit Recipe</a>
+                            <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}"
+                                class="waves-effect waves-light btn-small right">Edit Recipe</a>
                             <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}"
                                 class="waves-effect waves-light btn-small right">Delete Recipe</a>
                         </div>
