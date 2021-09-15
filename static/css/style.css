@@ -200,6 +200,10 @@ main {
     margin-left: 25px;
 }
 
+.carousel .carousel-item {
+    visibility: visible;
+}
+
 
 .carousel.carousel-slider .carousel-item {
     background-repeat: no-repeat;
