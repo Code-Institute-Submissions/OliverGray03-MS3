@@ -6,7 +6,7 @@ $(document).ready(function () {
     $('.carousel.carousel-slider').carousel({
         fullWidth: true,
         indicators: true
-    });
+    }, setTimeout(autoplay, 5000));
     $(".tooltipped").tooltip();
     $('select').formSelect();
 
@@ -129,3 +129,8 @@ $(document).ready(function () {
         }
     });
 });
+
+function autoplay() {
+    $('.carousel').carousel('next');
+    setTimeout(autoplay, 5000);
+}
