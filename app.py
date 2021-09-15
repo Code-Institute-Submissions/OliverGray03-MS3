@@ -48,9 +48,9 @@ def add_recipe():
         recipe = {
             "category_name": request.form.get("category_name"),
             "recipe_name": request.form.get("recipe_name"),
-            "servings": request.form.get("servings"),
-            "prep_time": request.form.get("prep_time"),
-            "cook_time": request.form.get("cook_time"),
+            "servings": int(request.form.get("servings")),
+            "prep_time": int(request.form.get("prep_time")),
+            "cook_time": int(request.form.get("cook_time")),
             "gf_free": gf_free,
             "ingredients": request.form.getlist("ingredients"),
             "recipe_image": request.form.get("recipe_image"),
@@ -183,7 +183,7 @@ def delete_recipe(recipe_id):
     if session["user"] == "admin" or created_by == session["user"]:
         mongo.db.recipe_detail.delete_one(recipe)
         flash("Recipe Successfully Deleted")
-        return redirect(url_for("home"))
+        return redirect(url_for("profile/" + session['user']))
 
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
@@ -227,10 +227,13 @@ def edit_recipe(recipe_id):
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
-    query = request.form.get("query")
-    recipes = list(mongo.db.recipe_detail.find({"$text": {"$search": query}}))
-    
-    return render_template("get_recipe.html", recipes=recipes)
+    if request.method == "POST":
+
+        query = request.form.get("query")
+        recipes = list(mongo.db.recipe_detail.find({"$text": {"$search": query}}))
+        return render_template(
+        "search.html",
+        recipes=recipes)
 
 
 if __name__ == "__main__":

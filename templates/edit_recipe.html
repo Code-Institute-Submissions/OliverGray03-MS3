@@ -14,16 +14,21 @@
                     <!----Recipe Name--->
                     <div class="input-field col s12 m6 l6">
                         <i class="fas fa-edit prefix icons"></i>
-                        <input id="recipe_name" name="recipe_name" type="text" class="validate">
+                        <input id="recipe_name" name="recipe_name" type="text" class="validate"
+                            value="{{ recipe.recipe_name }}">
                         <label for="recipe_name">Recipe Name</label>
                     </div>
                     <!----Category Name--->
                     <div class="input-field col s12 m6 l6">
                         <i class="fas fa-utensils prefix icons"></i>
                         <select id="category_name" name="category_name" class="validate" required>
-                            <option value="Choose your meal" disabled selected>Choose your meal</option>
                             {% for category in categories %}
+                            {% if recipe.category_name == category.category_name: %}
+                            <option value="{{ category.category_name }}" selected>
+                                {{ category.category_name }}</option>
+                            {% else %}
                             <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                            {% endif %}
                             {% endfor %}
                         </select>
                         <label class="label-margin" for="category_name">Meal Type</label>
@@ -33,15 +38,17 @@
                 <div class="row">
                     <div class="input-field col col s12 m6 l6">
                         <i class="fas fa-globe-europe prefix icons"></i>
-                        <input id="cuisine" name="cuisine" type="text" class="validate" required>
+                        <input id="cuisine" name="cuisine" type="text" class="validate" required
+                            value="{{ recipe.cuisine }}">
                         <label for="cuisine">Cuisine</label>
                     </div>
                     <!----Servings--->
                     <div class="input-field col col s12 m6 l6">
                         <i class="fas fa-users prefix icons"></i>
                         <input id="servings" name="servings" min="1" max="20" type="number" class="validate tooltipped"
-                            data-position="bottom" data-tooltip="Between 1-20 (e.g: 6)" required>
-                        <label class="headings-light label-margin" for="servings">Servings</label>
+                            data-position="bottom" data-tooltip="Between 1-20 (e.g: 6)" required
+                            value="{{ recipe.servings }}">
+                        <label class=" headings-light label-margin" for="servings">Servings</label>
                     </div>
                 </div>
                 <!----Prep Time--->
@@ -50,8 +57,8 @@
                         <i class="fas fa-stopwatch prefix icons"></i>
                         <input id="prep_time" name="prep_time" min="1" max="999" type="number"
                             class="validate tooltipped" data-position="bottom" data-tooltip="Between 1-999 (e.g: 90)"
-                            required>
-                        <label class="headings-light label-margin" for="prep_time">Preparation Time
+                            required value="{{ recipe.prep_time }}">
+                        <label class=" headings-light label-margin" for="prep_time">Preparation Time
                             <small>(mins)</small></label>
                     </div>
                     <!----Cook Time--->
@@ -59,8 +66,8 @@
                         <i class="far fa-hourglass prefix icons"></i>
                         <input id="cook_time" name="cook_time" min="1" max="999" type="number"
                             class="validate tooltipped" data-position="bottom" data-tooltip="Between 1-999 (e.g: 90)"
-                            required>
-                        <label class="headings-light label-margin" for="cook_time">Cooking Time
+                            required value="{{ recipe.cook_time }}">
+                        <label class=" headings-light label-margin" for="cook_time">Cooking Time
                             <small>(mins)</small></label>
                     </div>
                 </div>
@@ -68,15 +75,17 @@
                 <div class="row">
                     <div class="col s12">
                         <div id="ingredients-container">
+                            {% for ingredient in recipe.ingredients %}
                             <div class="row ingredient-container" id="ingredient-container_0">
                                 <div class="input-field">
                                     <i class="fas fa-list prefix icons"></i>
                                     <textarea id="ingredients" name="ingredients" minlength="2" maxlength="100"
                                         class="materialize-textarea validate tooltipped" data-position="bottom"
-                                        data-tooltip="e.g: 500g Chicken Breast" required></textarea>
+                                        data-tooltip="e.g: 500g Chicken Breast" required>{{ ingredient }}</textarea>
                                     <label class="label-margin" for="ingredients">Ingredients</label>
                                 </div>
                             </div>
+                            {% endfor %}
                         </div>
                         <div class="row">
                             <div class="col s12 center-align">
@@ -84,28 +93,32 @@
                                     Ingredient <i class="fas fa-plus-circle right"></i></button>
                             </div>
                         </div>
+                        {% if recipe.ingredients|length > 1: %}
                         <div class="row">
                             <div class="col s12 center-align">
                                 <button type="button" class="btn" id="remove-ingredient">Remove
                                     Ingredient <i class="fas fa-minus-circle right"></i></button>
                             </div>
                         </div>
+                        {% endif %}
                     </div>
                 </div>
                 <!----Method--->
                 <div class="row">
                     <div class="col s12">
                         <div id="methods-container">
+                            {% for step in recipe.recipe_method %}
                             <div class="row method-container" id="method-container_0">
                                 <div class="input-field">
                                     <i class="fas fa-list prefix icons"></i>
                                     <textarea id="method" name="method" minlength="2" maxlength="100"
                                         class="materialize-textarea validate tooltipped" data-position="bottom"
                                         data-tooltip="e.g: Cut the chicken breast into small chunks"
-                                        required></textarea>
+                                        required>{{ step }}</textarea>
                                     <label class="label-margin" for="method">Method</label>
                                 </div>
                             </div>
+                            {% endfor %}
                         </div>
                         <div class="row">
                             <div class="col s12 center-align">
@@ -113,12 +126,14 @@
                                     Step <i class="fas fa-plus-circle right"></i></button>
                             </div>
                         </div>
+                        {% if recipe.recipe_method|length > 1: %}
                         <div class="row">
                             <div class="col s12 center-align">
                                 <button type="button" class="btn" id="remove-step">Remove
                                     Step <i class="fas fa-minus-circle right"></i></button>
                             </div>
                         </div>
+                        {% endif %}
                     </div>
                 </div>
                 <!-----Difficuty------>
@@ -138,8 +153,8 @@
                         <i class="fas fa-camera prefix icons"></i>
                         <input id="recipe_image" name="recipe_image" minlength="5" type="url"
                             class="validate tooltipped" data-position="bottom" data-tooltip="URL ending in JPG or PNG"
-                            required>
-                        <label class="image-label" for="recipe_image">Image URL</label>
+                            required value="{{ recipe.recipe_image }}>
+                        <label class=" image-label" for="recipe_image">Image URL</label>
                     </div>
                 </div>
                 <!----GF Switch--->
@@ -149,7 +164,11 @@
                             <span class="switch-text">Gluten Free</span>
                             <label for="gf_free" class="label-margin">
                                 <span class="switch-text-selector content-light">No</span>
+                                {% if recipe.gf_free == "on": %}
+                                <input type="checkbox" id="gf_free" name="gf_free" checked>
+                                {% else %}
                                 <input type="checkbox" id="gf_free" name="gf_free">
+                                {% endif %}
                                 <span class="lever"></span>
                                 <span class="switch-text-selector">Yes</span>
                             </label>
