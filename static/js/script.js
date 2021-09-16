@@ -11,6 +11,7 @@ $(document).ready(function () {
     $('select').formSelect();
 
 
+
     //Adds an ingredient to a list in add recipe form//
     $("#add-ingredient").click(function () {
         var clone = $("#ingredient-container_0").clone();
@@ -53,19 +54,19 @@ $(document).ready(function () {
 
     if ($(".method-container").length == 1) {
         $("#remove-step").hide();
-    };
+    }
 
 
     if ($(".ingredient-container").length == 1) {
         $("#remove-ingredient").hide();
-    };
+    }
 
     $("#confirm-password-error").hide();
 
     // checks to see whether the passwords match & shows or hides and error message whilst stopping the form from posting if false//
     function validate() {
         return $("#confirm-password").val() === $("#password").val();
-    }
+    };
 
     function showError() {
         $("#confirm-password-error").show();
@@ -95,10 +96,11 @@ $(document).ready(function () {
     });
 });
 
+
 function autoplay() {
     $('.carousel').carousel('next');
     setTimeout(autoplay, 5000);
-}
+};
 
 // Validation for drop down options//
 
@@ -141,3 +143,4 @@ function validateMaterializeSelect() {
             });
         }
     });
+};

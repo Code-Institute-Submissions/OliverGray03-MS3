@@ -188,6 +188,12 @@ main {
     margin-bottom: 1em;
 }
 
+.delete-button {
+    background-color: red;
+    margin-right: 10px;
+    color: white;
+}
+
 /*-----Home page----*/
 
 .carousel.carousel-slider .carousel-item h2 {
@@ -235,4 +241,40 @@ main {
 
 .cta-button {
     margin: -30px;
+}
+
+.cookbook-image {
+    margin-top: 15px;
+}
+
+/*----Profile-----*/
+.delete-profile-button {
+    background-color: red;
+    color: white;
+    margin: 10px;
+}
+
+.profile-card {
+    width: 50%;
+    margin-top: 10px;
+}
+
+/*-----search------*/
+
+.card-panel {
+    background-color: white;
+}
+
+.search-buttons {
+    color: white;
+}
+
+/*-----Full recipe----*/
+.full-recipe-container {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.full-recipe-image {
+    max-width: 100%;
 }
