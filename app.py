@@ -188,6 +188,7 @@ def delete_recipe(recipe_id):
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
+
     recipe = mongo.db.recipe_detail.find_one({"_id": ObjectId(recipe_id)})
     created_by = recipe['created_by']
 
@@ -197,20 +198,20 @@ def edit_recipe(recipe_id):
         edit = {
             "category_name": request.form.get("category_name"),
             "recipe_name": request.form.get("recipe_name"),
-            "servings": request.form.get("servings"),
-            "prep_time": request.form.get("prep_time"),
-            "cook_time": request.form.get("cook_time"),
+            "servings": int(request.form.get("servings")),
+            "prep_time": int(request.form.get("prep_time")),
+            "cook_time": int(request.form.get("cook_time")),
             "gf_free": gf_free,
             "ingredients": request.form.getlist("ingredients"),
             "recipe_image": request.form.get("recipe_image"),
             "recipe_method": request.form.getlist("method"),
-            "created_by": session["user"],
+            "created_by": created_by,
             "difficulty": request.form.getlist("difficulty"),
             "cuisine": request.form.get("cuisine")
         }
 
 
-        mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, edit)
+        mongo.db.recipe_detail.update({"_id": ObjectId(recipe_id)}, edit)
         flash("Recipe Successfully Updated")
         return redirect(url_for("home"))
 
