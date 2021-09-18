@@ -9,6 +9,7 @@ $(document).ready(function () {
     }, setTimeout(autoplay, 5000));
     $(".tooltipped").tooltip();
     $('select').formSelect();
+    $('.modal').modal();
 
 
 
@@ -94,6 +95,15 @@ $(document).ready(function () {
             showError();
         }
     });
+
+    $(".delete").click(function () {
+        var $this = $(this);
+        var url = $this.data('delete-url');
+        var message = $this.data('delete-message');
+
+        $("#delete-confirm").attr("href", url);
+        $("#deleteModal").find("p").html(message);
+    })
 });
 
 

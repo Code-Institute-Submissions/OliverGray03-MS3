@@ -35,10 +35,29 @@ def home():
         recipes=recipes)
 
 
-@app.route("/get_recipe")
+@app.route("/get_recipe", methods=["GET", "POST"])
 def get_recipe():
+    if request.method == "POST":
+
+        query = request.form.get("query")
+        category_search = request.form.get("category_search")
+
+        dbSearch = {}
+        if query != "":
+            dbSearch["$text"] = {"$search": query}
+            
+        if category_search != "":
+            dbSearch["category_name"] = category_search
+
+        recipes = list(mongo.db.recipe_detail.find(dbSearch))
+        categories = mongo.db.categories.find().sort("category_name", 1 )
+
+        return render_template(
+        "get_recipe.html", recipes=recipes, categories=categories)
+
     recipes = mongo.db.recipe_detail.find()
-    return render_template("get_recipe.html", recipes=recipes)
+    categories = mongo.db.categories.find().sort("category_name", 1 )
+    return render_template("get_recipe.html", recipes=recipes, categories=categories)
 
 
 @app.route("/add_recipe", methods=["GET", "POST"])
@@ -64,7 +83,6 @@ def add_recipe():
         flash("Recipe Successfully Added")
         return redirect(url_for("get_recipe"))
     
-    categories = mongo.db.categories.find().sort("category_name, 1")
         
     categories = mongo.db.categories.find().sort("category_name", 1 )
     difficulty = mongo.db.difficulty.find().sort("difficulty", 1 )
@@ -73,13 +91,25 @@ def add_recipe():
 
 @app.route("/full_recipe/<recipe_id>")
 def full_recipe(recipe_id):
+    #if ()#user session doesnt exist)
+        #flash("Your profile has been succesfully deleted")
+        #redirect to register
+
     recipe = mongo.db.recipe_detail.find_one({"_id" :ObjectId(recipe_id)})
+
+    #404 page doesnt exist
+    #if (!recipe):
+        #return #redirect to 404
 
     if session["user"]:
         return render_template(
             "full_recipe.html",
             recipe=recipe
         )
+    else:
+        flash("Please login to veiw the full recipe") 
+        return render_template(url_for("register"))
+
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -183,7 +213,7 @@ def delete_recipe(recipe_id):
     if session["user"] == "admin" or created_by == session["user"]:
         mongo.db.recipe_detail.delete_one(recipe)
         flash("Recipe Successfully Deleted")
-        return redirect(url_for("profile/" + session['user']))
+        return redirect(url_for("profile", username=session['user']))
 
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
@@ -224,17 +254,11 @@ def edit_recipe(recipe_id):
             "edit_recipe.html", recipe=recipe, categories=categories, difficulty=difficulty)
 
 
-
-
-@app.route("/search", methods=["GET", "POST"])
-def search():
-    if request.method == "POST":
-
-        query = request.form.get("query")
-        recipes = list(mongo.db.recipe_detail.find({"$text": {"$search": query}}))
-        return render_template(
-        "search.html",
-        recipes=recipes)
+@app.errorhandler(404)
+def not_found(e):
+  
+# defining function
+  return render_template("404.html")
 
 
 if __name__ == "__main__":

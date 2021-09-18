@@ -27,10 +27,10 @@
                         class="fas fa-hamburger"></i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ url_for('home') }}">Home</a></li>
-                    <li><a href="{{ url_for('get_recipe') }}">Recipies</a></li>
+                    <li><a href="{{ url_for('get_recipe') }}">Recipes</a></li>
                     {% if session.user %}
                     <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-                    <li><a href="{{ url_for('add_recipe') }}">Add Recipie</a></li>
+                    <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
                     <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                     {% else %}
                     <li><a href="{{ url_for('login') }}">Log In</a></li>
@@ -45,10 +45,10 @@
                 <h4 class=" side-nav center-align">Ex Palnta <i class="fas fa-leaf"></i></h4>
             </li>
             <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('get_recipe') }}">Recipies</a></li>
+            <li><a href="{{ url_for('get_recipe') }}">Recipes</a></li>
             {% if session.user %}
             <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-            <li><a href="{{ url_for('add_recipe') }}">Add Recipie</a></li>
+            <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
             <li><a href="{{ url_for('logout') }}">Log Out</a></li>
             {% else %}
             <li><a href="{{ url_for('login') }}">Log In</a></li>
