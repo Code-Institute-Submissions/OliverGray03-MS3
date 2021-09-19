@@ -87,7 +87,7 @@ As a logged in account user, i can view all that a new user can as well as:
 My wireframes were created using [Balsamiq](https://balsamiq.com) wireframes and are detailed below:
 - Mobile 
 - Tablet
-- Desktop
+- [Desktop](https://olivergray03.github.io/MS3/wireframes/ExPlantaDesktopwireframes.pdf)
 
 # Technology Used
 Languages

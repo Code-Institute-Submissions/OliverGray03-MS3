@@ -3,36 +3,37 @@
 <br>
 <br>
 
-<div class="row">
+<div class="row home-headings">
     <h3>
         All recipes
     </h3>
 </div>
 <br>
-<div class="row search-card-panel">
+<div class="row search">
     <div class="col s12">
         <form action="{{ url_for('get_recipe') }}" method="post">
-            <div class="row valign-wrapper center-align">
-                <div class="input-field col s12">
-                    <i class="fas fa-search prefix"></i>
+            <div class="row">
+                <div class="input-field col s6 offset-s3">
+                    <i class="fas fa-search prefix icons"></i>
                     <input type="text" name="query" id="query" class="validate">
                     <label for="query" class="search-label">Search Recipies</label>
                 </div>
-                <div class="col s12">
-                    <a href="{{ url_for('get_recipe') }}" class="red btn text-shadow search-buttons">Reset</a>
-                    <button type="submit" class="btn text-shadow search-buttons">
-                        <i class="fas fa-search prefix"></i>Search
-                    </button>
-                </div>
-                <div class="input-field col s12">
+                <div class="input-field col 6 offset-s3">
                     <i class="fas fa-utensils prefix icons"></i>
                     <select id="category_search" name="category_search" class="validate">
-                        <option value="Choose your meal" disabled selected>Choose your meal</option>
+                        <option value="Choose your meal" disabled selected>Choose your meal type</option>
                         {% for category in categories %}
                         <option value="{{ category.category_name }}">{{ category.category_name }}</option>
                         {% endfor %}
                     </select>
-                    <label class="label-margin" for="category_search">Meal Type</label>
+                </div>
+                <div class="row">
+                    <div class="col s12 offset-s3">
+                        <a href="{{ url_for('get_recipe') }}" class="btn text-shadow search-button-reset">Reset</a>
+                        <button type="submit" class="btn text-shadow search-button-search">
+                            <i class="fas fa-search prefix"></i>Search
+                        </button>
+                    </div>
                 </div>
             </div>
         </form>

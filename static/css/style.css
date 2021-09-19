@@ -273,6 +273,20 @@ main {
 }
 
 /*-----search------*/
+.search {
+    width: 80%;
+}
+
+.search-button-reset {
+    background-color: red;
+    color: white;
+}
+
+.search-button-search {
+    color: white;
+}
+
+
 
 /*-----Full recipe----*/
 .full-recipe-container {
