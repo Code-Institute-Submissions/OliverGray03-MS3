@@ -194,6 +194,18 @@ main {
     margin: 20px auto;
 }
 
+.save-recipe-button {
+    float: right;
+    font-size: 25px;
+    background-color: white;
+    border: none;
+    margin-top: 20px;
+}
+
+.save-recipe-icon {
+    color: red;
+}
+
 .carousel-full-recipe-btn {
     margin-bottom: 15px;
     margin-top: 5px;

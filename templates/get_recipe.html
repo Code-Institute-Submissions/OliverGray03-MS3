@@ -45,11 +45,19 @@
         <div class="card">
             <div class="row card-image center-align">
                 <img src="{{recipe.recipe_image}}" alt="{{recipe.recipe_name}}">
-                <a class="btn-floating halfway-fab red"><i class="far fa-heart"></i></a>
             </div>
             <div class="row">
                 <h3 class="card-title center-align">{{ recipe.recipe_name }}</h3>
             </div>
+            {% if session.user %}
+            <div class="save">
+                <form method="POST" action="{{ url_for('save_recipe', recipe_id=recipe._id)}}">
+                    <button class="waves-effect waves-light btn-large save-recipe-button" aria-label="save-recipe">
+                        <i class="far fa-heart icons save-recipe-icon"></i></a>
+                    </button>
+                </form>
+            </div>
+            {% endif %}
             <div class="row">
                 <div class="card-content">
                     <i class="fas fa-users prefix icons card-icons"></i>
