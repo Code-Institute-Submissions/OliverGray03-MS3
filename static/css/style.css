@@ -190,6 +190,18 @@ main {
     width: 80%;
     background-color: #3ca542;
     color: #fff;
+    display: block;
+    margin: 20px auto;
+}
+
+.carousel-full-recipe-btn {
+    margin-bottom: 15px;
+    margin-top: 5px;
+    width: 20%;
+    background-color: #3ca542;
+    color: #fff;
+    display: block;
+    margin: 20px auto;
 }
 
 .list-style {

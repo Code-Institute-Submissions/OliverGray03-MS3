@@ -8,8 +8,8 @@
         <div class="carousel-item" style="background-image: url( {{recipe.recipe_image}} );">
             <h2 class="carousel-text">{{ recipe.recipe_name }}</h2>
             <div class="carousel-fixed-item center">
-                <a href="{{ url_for('full_recipe', recipe_id=recipe._id) }}"
-                    class="btn waves-effect white grey-text darken-text-2">View Recipe</a>
+                <a href="{{ url_for('full_recipe', recipe_id=recipe._id) }}" class="btn carousel-full-recipe-btn">View
+                    Recipe</a>
             </div>
         </div>
         {% endfor %}
@@ -91,6 +91,15 @@
                     <i class="fas fa-tachometer-alt prefix icons card-icons"></i>
                     <p>Difficulty: {{ recipe.difficulty }}</p>
                 </div>
+                {% if session.user %}
+                <div class="row">
+                    <form method="POST" action="{{ url_for('save_recipe', recipe_id=recipe._id)}}">
+                        <button class="save-recipe-button" aria-label="save-recipe">
+                            <i class="far fa-heart"></i></a>
+                        </button>
+                    </form>
+                </div>
+                {% endif %}
             </div>
             <div class="row center-align">
                 <a href="{{ url_for('full_recipe', recipe_id=recipe._id) }}" class="btn full-recipe-btn">See full

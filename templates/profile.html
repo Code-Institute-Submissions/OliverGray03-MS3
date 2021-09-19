@@ -16,12 +16,12 @@
                 <tr>
                     <td><i class="fas fa-utensils icons"></i></td>
                     <td>Recipes Created: </td>
-                    <td>{{ recipes|length}}</td>
+                    <td>{{ recipes|length }}</td>
                 </tr>
                 <tr>
                     <td><i class="fas fa-save icons"></i></td>
-                    <td>Recipes Saved: </td>
-                    <td></td>
+                    <td>Recipes Saved:</td>
+                    <td>{{ saved_recipes|length }}</td>
                 </tr>
             </table>
             <div class="center">
@@ -35,7 +35,7 @@
 
     <div class="row">
         <div class="col s12">
-            <h4>{{ username }}'s recipes</h4>
+            <h4 class="home-headings">{{ username }}'s recipes</h4>
         </div>
     </div>
 
@@ -85,8 +85,6 @@
         {% endfor %}
     </div>
 
-
-
     <div class="row">
         <div class="col s12 center">
             <div class="row right-align">
@@ -94,6 +92,62 @@
                     recipe</a>
             </div>
         </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12">
+            <h4 class="home-headings">{{ username }}'s saved recipes</h4>
+        </div>
+    </div>
+
+    {% if saved_recipes|length == 0 %}
+    <div>you have no saved recipes, save a recipe to get started</div>
+    {% endif %}
+
+    <div class="row">
+        {% for saved_recipe in saved_recipes %}
+        <div class="col s12 m4">
+            <div class="card">
+                <div class="row card-image center-align">
+                    <img src="{{saved_recipe.recipe_image}}" alt="{{saved_recipe.recipe_name}}">
+                    <a class="btn-floating halfway-fab red"><i class="far fa-heart"></i></a>
+                </div>
+                <div class="row">
+                    <h3 class="card-title center-align">{{ saved_recipe.recipe_name }}</h3>
+                </div>
+                <div class="row">
+                    <div class="card-content">
+                        <i class="fas fa-users prefix icons card-icons"></i>
+                        <p>Servings: {{ saved_recipe.servings }}</p>
+                    </div>
+                    <div class="card-content">
+                        <i class="far fa-hourglass prefix icons card-icons"></i>
+                        <p>Cook Time: {{ saved_recipe.cook_time }}</p>
+                    </div>
+                    <div class="card-content">
+                        <i class="fas fa-tachometer-alt prefix icons card-icons"></i>
+                        <p>Difficulty: {{ saved_recipe.difficulty }}</p>
+                    </div>
+                    <div class="row center-align">
+                        <a href="{{ url_for('full_recipe', recipe_id=saved_recipe._id) }}"
+                            class="btn full-recipe-btn">See
+                            full
+                            recipe</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 center">
+                        <div class="row right-align">
+                            <a data-delete-message="Are you sure you want to delete {{ saved_recipe.recipe_name }} from saved recipes?"
+                                data-delete-url="{{ url_for('delete_saved_recipe', recipe_id=saved_recipe._id) }}"
+                                class="waves-effect waves-light btn-small right delete-button delete
+                                modal-trigger" href="#deleteModal">Delete Saved Recipe</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
     </div>
 
     <!-- Modal Structure -->
