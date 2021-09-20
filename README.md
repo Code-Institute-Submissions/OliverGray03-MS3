@@ -1,7 +1,7 @@
 # Contents 
 
 # Ex Planta 
-![Website mock ups](static/images/explantamockup.png))
+![Website mock ups](static/images/explantamockup.png)
 
 The live site can be viewed [here](https://vegan-recipe-manager-ms3.herokuapp.com/)
 
@@ -91,9 +91,32 @@ The main areas i wish to improve on in the future are:
 # Skeleton
 ## Wireframes
 My wireframes were created using [Balsamiq](https://balsamiq.com) wireframes and are detailed below:
-- Mobile 
-- Tablet
-- [Desktop](https://olivergray03.github.io/MS3/wireframes/ExPlantaDesktopwireframes.pdf)
+
+- Home
+    - [Desktop](static/images/wireframes/home-desktop.png)
+    - [Mobile](static/images/wireframes/home-mobile.png)
+    - [tablet](static/images/wireframes/home-tablet.png)
+- Login
+    - [Desktop](static/images/wireframes/login-desktop.png)
+    - [Mobile](static/images/wireframes/login-mobile.png)
+    - [tablet](static/images/wireframes/login-tablet.png)
+- Register
+    - [Desktop](static/images/wireframes/register-desktop.png)
+    - [Mobile](static/images/wireframes/register-mobile.png)
+    - [tablet](static/images/wireframes/home-tablet.png)
+- Add recipe
+    - [Desktop](static/images/wireframes/add-recipe-desktop.png)
+    - [Mobile](static/images/wireframes/add-recipe-mobile.png)
+    - [tablet](static/images/wireframes/add-recipe-tablet.png)
+- Recipes
+    - [Desktop](static/images/wireframes/recipes-desktop.png)
+    - [Mobile](static/images/wireframes/recipes-mobile.png)
+    - [tablet](static/images/wireframes/recipes-tablet.png)
+- Profile
+    - [Desktop](static/images/wireframes/profile-desktop.png)
+    - [Mobile](static/images/wireframes/profile-mobile.png)
+    - [tablet](static/images/wireframes/profile-tablet.png)
+- [Recipe Cards](static/images/wireframes/recipe-card.png)
 
 ## Database
 For the backend of the project i used MongoDb to store and retrieve all the data. This database was set up with 3 main collections:
@@ -287,7 +310,7 @@ By forking the GitHub Repository we make a copy of the original repository on ou
 ## Making a clone to run locally
 
 1. Log into GitHub
-2. Select the OliverGray03/ms3  respository
+2. Select the OliverGray03/ms3 respository
 3. Under the repository name, click "Clone or download"
 4. To clone the repository using HTTPS, under "Clone with HTTPS", copy the link
 5. Open Git Bash
