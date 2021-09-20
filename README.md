@@ -133,9 +133,41 @@ Other
 - [Responsinator](https://www.responsinator.com/)
 - [Chrome lighthouse](https://developers.google.com/web/tools/lighthouse)
 - [W3C Jigsaw](https://jigsaw.w3.org/css-validator/)
+- [Favicon](https://favicon.io/)
 
 # Testing
 ## Testing User Stories
+- As a first time user, i want to understand the purpose of the website easily from the homepage
+    - The user is met with a large carousel of recipe images with an interactive "view recipe button" indicating the purpose of the site.
+    - Below this there is an "about us" section further outlining the purpose of the site. 
+- As a first time user, i want to see enticing recipes that inspire me to recreate them
+    - To further entice the user there is a small sample of recipe cards at the bottom of the home page, there is then an "explore" button which directs to the main recipe page 
+    - The main recipe page displays all the recipes listed on the site for the user to get key information from. 
+- As a first time user, i want to establish the benefits of registering and creating an account 
+    - When clicking the "full recipe" button the user is directed to the register page as well as being displayed a flash message encouraging the user to regsiter for an account to see the full recipe. 
+- As a first time user, i want to be able to register and login quickly and eaisly using simple but safe forms
+    - Both the regsiter and login pages follow the same style and design for brand and user consistancy. 
+    - Both forms only require the necessary fields to be complete to enter the site. Whilst being simple to complete the pages also offer security and peace of mind for the user by validating fields, matching password entries and a link to either the register or login page should they be on the wrong page. 
+
+- As a returning user, i want to easily log in to my account 
+    - Similar to the above the login page is simple to use with only two fields and a prompt message should either the username or password be incorrect. 
+- As a returning user, i want to be able to veiw full recipes including the ingredients list and method
+    - As a loged in user you can use the "full recipe" button on the recipe cards to view the full recipe and details which were hidden on the smaller recipe sample card. 
+- As a returning user, i want to be able to search recipes by name
+    - All users have access to a search bar located at the top of the recipe page, here you can search recipe by name or use the dropdown category search to search by meal type. 
+- As a returning user, i want to be able to save recipes i like to easily locate at a later date
+    - Logged in users see a heart icon on the side of each card, a recognised icon for save or add to favourites. When pressing this icon the recipe is saved and listed to view on the users profile page. 
+
+- CRUD Functionality
+    - Logged in users have access to CRUD functionality for recipes accross the site 
+    - Users can create a recipe using the "add recipe" page. This page is a simple form with either drop down options or text fields for users to enter all the details they would see on the recipe card. 
+    - The ingredient and method fields are added as array's, once a user has entered on part of they can use the "add ingredient/step" buttons to add further elements. These buttons are interactive and a "remove ingredient/step" button appears once one element has been added. 
+    - Reading a recipe has been detailed in the recipe card samples or the full recipe available to logged in users only. 
+    - A user can only edit or delete a recipe they have created (unless they have admin restrictions)
+    - Editing a recipe is done using the same form used to create a recipe. First the user must locate the recipe in their profile and click the "edit recipe" button, they are then redirected to the form with all the elements from the recipe filled in. The user can then edit these and update the database. 
+    - To delete a recipe the user must locate the recipe in their profile and click the "delete recipe" button, this removes the recipe from the database. #
+- As an admin user, i need to be able to edit or delete any recipe which i feel arent suitable for the website 
+    - An admin user can do all of the above to any recipe accross the site. 
 
 ## Testing Performance
 

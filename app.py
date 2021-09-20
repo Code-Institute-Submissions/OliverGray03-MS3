@@ -190,11 +190,14 @@ def profile(username):
     currentUser = mongo.db.users.find_one(
         {"username": session["user"]})
     username = currentUser["username"]
-   
-    recipes = list(mongo.db.recipe_detail.find(
-        {"created_by": session['user']}))
 
     saved_recipes = []
+
+    if session["user"] == "admin":
+        recipes = list(mongo.db.recipe_detail.find())
+    else:
+        recipes = list(mongo.db.recipe_detail.find(
+            {"created_by": session['user']}))
 
     if "saved_recipes" in currentUser:
         for recipe_id in currentUser["saved_recipes"]:
@@ -239,6 +242,8 @@ def delete_recipe(recipe_id):
         mongo.db.recipe_detail.delete_one(recipe)
         flash("Recipe Successfully Deleted")
         return redirect(url_for("profile", username=session['user']))
+    else:
+        abort(403)
 
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
@@ -314,4 +319,4 @@ def not_found(e):
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=True)
+            debug=False)
