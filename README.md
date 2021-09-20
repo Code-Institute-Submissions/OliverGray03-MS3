@@ -211,11 +211,37 @@ By forking the GitHub Repository we make a copy of the original repository on ou
 
 ## Heroku App
 
+- Log in or sign up to Heroku.
+- From the Heroku Dashboard click "Create New App" button.
+- Give the app a name (this must be unique and Heroku will let you know if this available)
+- Set the most appropriate region and click "Create App", which will take the user to the "App Dashboard".
+- Within our project, to install Heroku type: "npm install -g heroku" in the terminal. We then need to tell Heroku which applications and dependencies are required to run the app.
+- Enter the following into the terminal: "pip3 freeze --local > requirements.txt". The Procfile is what Heroku looks for to know which file runs the app and how to run it.
+- Enter the following into the terminal: "echo web: python app.py > Procfile".
+- Set up automatic deployment by clicking the deploy tab and clicking GitHub as the deployment method.
+- Ensure your GitHub profile is displayed, then add the name of the repository and click search.
+- Click "Connect" to the correct repository.
+- Click the "Settings" tab and then click "Reveal Config Vars".
+- Here we can securely tell Heroku which variables are required. These can be found in the "env.py" file and are as follows:
+    - IP : 0.0.0.0
+    - Port : 5000
+    - SECRET_KEY : Randomly Generated from [RandomKeygen](https://randomkeygen.com/)
+    - MONGO_URI : Unique MongoDB URI
+    - MONGO_DBNAME : Unique MongoDB Database Name
+- To get the MONGO_URI, on MongoDB click the "Overview" tab followed by the "Connect" button.
+- Select "Connect Your Application"
+- Ensure "Python" is selected for the "Driver" and choose the appropriate version.
+- Copy the connection string and substitute in your own database name and password in the angle brackets placeholder.
+- Click the "Deploy" tab and "Enable Automatic Deployment"
+
+
 # Credits
 - My mentor Antonio Rodriguez who has provided me with guidance and support through the project
 ## Code
 - Code Institutes task manager app walkthrough project for the basis behind CRUD functionality
+- [Stack overflow](https://stackoverflow.com/) for a number of CSS styling and python code queries 
 ## Media
 - The image used for both the register and login page was sourced from [Vanesa Conunaese on Unsplash](https://unsplash.com/photos/JXow53j6AtE)
 - The image used on the hompage was sourced from [Ella Olsson on Unsplash](https://unsplash.com/photos/2IxTgsgFi-s)
+- The image used for book advertisement was sourced from [The Vegan Larder](https://theveganlarder.com/one-pound-vegan-meals-cook-book-review/)
 
