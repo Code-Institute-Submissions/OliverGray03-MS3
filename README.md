@@ -80,6 +80,11 @@ As a logged in account user, i can view all that a new user can as well as:
 - On the user pressing delete recipe, similar to the delete profile a pop up modal appears to confirm the users actionsm should they go ahead the recipe is then deleted from the database
 - The second button is to edit a recipe the user has uploaded. On clicking this the user is directed to a new edit recipe page, this is set up similar to the "add recipe" page, however the recipe details of that being edited are auto completed in the fields for ease of use. Once a recipe is edited the databse is updated with the new details. 
 
+### Future features
+The main areas i wish to improve on in the future are:
+- Further page options for the recipes page, adding too many recipes to one page could look crowed so an improvement would be to have the recipes displayed ona number of pages using next and back buttons. 
+- Currently users are uploading images using URL's i would like to use s3 bucket as When you upload a file to Amazon S3, it is stored as an S3 object. Objects consist of the file data and metadata that describes the object. This will prevent images becoming void should the original owners remove them.
+
 # Design 
 
 # Skeleton
@@ -89,37 +94,45 @@ My wireframes were created using [Balsamiq](https://balsamiq.com) wireframes and
 - Tablet
 - [Desktop](https://olivergray03.github.io/MS3/wireframes/ExPlantaDesktopwireframes.pdf)
 
+## Design
+- I chose to go with a neutral mixed with predominantly green colour scheme as i felt this matched the "Vegan" philosophy of my target audience. The color scheme was inspired by [Coolers](https://coolors.co/palettes/trending/white,green,#3ca542) and is shown below:
+
+![colour scheme](static/images/Explanta-color-scheme.jpg)
+
+### Typography
+- The typography used accross the site came from [Google Fonts](https://fonts.google.com/) and was called Noto Sans. 
+
 # Technology Used
 Languages
-- HTML
-- CSS
-- JavaScript
-- Python
+- [HTML](https://en.wikipedia.org/wiki/HTML)
+- [CSS](https://en.wikipedia.org/wiki/CSS)
+- [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
+- [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
 
 Libraries & Integrations
-- Flask
-- Jinja
-- Materialize
-- Font Awesome
-- Google Fonts
-- JQuery
+- [Flask](https://en.wikipedia.org/wiki/Flask_(web_framework))
+- [Jinja](https://en.wikipedia.org/wiki/Jinja_(template_engine))
+- [Materialize](https://materializecss.com/cards.html)
+- [Font Awesome](https://fontawesome.com/)
+- [Google Fonts](https://fonts.google.com/)
+- [JQuery](https://jquery.com/)
 
 Database
-- MongoDB
+- [MongoDB](https://www.mongodb.com/)
 
 Version control
-- Git 
-- Git Hub
+- [Git](https://git-scm.com/) 
+- [Git Hub](https://github.com/)
 
 Wireframes 
-- Balsamiq
+- [Balsamiq](https://balsamiq.com)
 
 Other
-- Heroku
-- Google Dev Tools
-- Responsinator
-- Chrome lighthouse
-- W3C Jigsaw
+- [Heroku](https://id.heroku.com/login)
+- [Google Dev Tools](https://developers.google.com/web/tools/)
+- [Responsinator](https://www.responsinator.com/)
+- [Chrome lighthouse](https://developers.google.com/web/tools/lighthouse)
+- [W3C Jigsaw](https://jigsaw.w3.org/css-validator/)
 
 # Testing
 ## Testing User Stories
