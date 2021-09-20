@@ -6,9 +6,8 @@
     margin-right: 0px;
 }
 
-.page-container {
-    display: flex;
-    flex-direction: column;
+.container {
+    max-width: none;
 }
 
 .register-bg-image {
@@ -206,8 +205,8 @@ main {
     color: red;
 }
 
-.card-content:last-child {
-    min-height: 45px;
+.card .card-content:nth-child(3) {
+    min-height: 120px;
 }
 
 .carousel-full-recipe-btn {

@@ -23,113 +23,123 @@
     <title>Ex Planta</title>
 </head>
 
-<body>
-    <header>
-        <!----Top nav bar-->
-        <nav>
-            <div class="nav-wrapper nav-headings">
-                <a href="{{ url_for('home') }}" class="brand-logo">Ex Planta <i
-                        class="center-align fas fa-leaf"></i></a>
-                <a href="{{ url_for('home') }}" data-target="mobile-demo" class="sidenav-trigger right"><i
-                        class="fas fa-hamburger"></i></a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="{{ url_for('home') }}">Home</a></li>
-                    <li><a href="{{ url_for('get_recipe') }}">Recipes</a></li>
-                    {% if session.user %}
-                    <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-                    <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
-                    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
-                    {% else %}
-                    <li><a href="{{ url_for('login') }}">Log In</a></li>
-                    <li><a href="{{ url_for('register') }}">Register</a></li>
-                    {% endif %}
-                </ul>
-            </div>
-        </nav>
-        <!----Mobile side nav bar---->
-        <ul class="sidenav" id="mobile-demo">
-            <li>
-                <h4 class=" side-nav center-align">Ex Palnta <i class="fas fa-leaf"></i></h4>
-            </li>
-            <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('get_recipe') }}">Recipes</a></li>
-            {% if session.user %}
-            <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-            <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
-            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
-            {% else %}
-            <li><a href="{{ url_for('login') }}">Log In</a></li>
-            <li><a href="{{ url_for('register') }}">Register</a></li>
-            {% endif %}
-        </ul>
-    </header>
-    <section>
-        <!--Flash Message-->
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        {% for message in messages %}
-        <div class="row flashes">
-            <h4 class="headings-dark center-align yellow lighten-3">{{message}}</h4>
-        </div>
-        {% endfor %}
+{% if backgroundimage %}
+
+<body class="register-bg-image">
+    {% else %}
+
+    <body>
         {% endif %}
-        {% endwith %}
-    </section>
-
-    <main class="page-container">
-        {% block content %}
-        {% endblock %}
-    </main>
-
-    <footer class="page-footer center-align">
-        <div class="container">
-            <div class="row footer-row">
-                <div class="col s12">
-                    <ul class="social-links list-inline">
-                        <li>
-                            <a target="_blank" rel="noreferrer" href="https://twitter.com/?lang=en-gb" role="button">
-                                <i class="fab fa-twitter-square footer-icons" aria-hidden="true"></i>
-                                <span class="sr-only">Twitter</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a target="_blank" rel="noreferrer" href="https://facebook.com/?lang=en-gb" role="button">
-                                <i class="fab fa-facebook-square footer-icons" aria-hidden="true"></i>
-                                <span class="sr-only">Facebook</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a target="_blank" rel="noreferrer" href="https://instagram.com/?lang=en-gb" role="button">
-                                <i class="fab fa-instagram-square footer-icons" aria-hidden="true"></i>
-                                <span class="sr-only">Instagram</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a target="_blank" rel="noreferrer" href="https://pinterest.com/?lang=en-gb" role="button">
-                                <i class="fab fa-pinterest-square footer-icons" aria-hidden="true"></i>
-                                <span class="sr-only">Pinterest</span>
-                            </a>
-                        </li>
+        <header>
+            <!----Top nav bar-->
+            <nav>
+                <div class="nav-wrapper nav-headings">
+                    <a href="{{ url_for('home') }}" class="brand-logo">Ex Planta <i
+                            class="center-align fas fa-leaf"></i></a>
+                    <a href="{{ url_for('home') }}" data-target="mobile-demo" class="sidenav-trigger right"><i
+                            class="fas fa-hamburger"></i></a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="{{ url_for('home') }}">Home</a></li>
+                        <li><a href="{{ url_for('get_recipe') }}">Recipes</a></li>
+                        {% if session.user %}
+                        <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+                        <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
+                        <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                        {% else %}
+                        <li><a href="{{ url_for('login') }}">Log In</a></li>
+                        <li><a href="{{ url_for('register') }}">Register</a></li>
+                        {% endif %}
                     </ul>
                 </div>
+            </nav>
+            <!----Mobile side nav bar---->
+            <ul class="sidenav" id="mobile-demo">
+                <li>
+                    <h4 class=" side-nav center-align">Ex Palnta <i class="fas fa-leaf"></i></h4>
+                </li>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('get_recipe') }}">Recipes</a></li>
+                {% if session.user %}
+                <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+                <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
+                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                {% else %}
+                <li><a href="{{ url_for('login') }}">Log In</a></li>
+                <li><a href="{{ url_for('register') }}">Register</a></li>
+                {% endif %}
+            </ul>
+        </header>
+        <section>
+            <!--Flash Message-->
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+            <div class="row flashes">
+                <h4 class="headings-dark center-align yellow lighten-3">{{message}}</h4>
             </div>
-        </div>
-        <div class="footer-copyright">
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </section>
+
+        <main class="container">
+            {% block content %}
+            {% endblock %}
+        </main>
+
+        <footer class="page-footer center-align">
             <div class="container">
-                © 2021 Copyright:
-                <a class="copyright" href="#">ExPlanta.com</a>
+                <div class="row footer-row">
+                    <div class="col s12">
+                        <ul class="social-links list-inline">
+                            <li>
+                                <a target="_blank" rel="noreferrer" href="https://twitter.com/?lang=en-gb"
+                                    role="button">
+                                    <i class="fab fa-twitter-square footer-icons" aria-hidden="true"></i>
+                                    <span class="sr-only">Twitter</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" rel="noreferrer" href="https://facebook.com/?lang=en-gb"
+                                    role="button">
+                                    <i class="fab fa-facebook-square footer-icons" aria-hidden="true"></i>
+                                    <span class="sr-only">Facebook</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" rel="noreferrer" href="https://instagram.com/?lang=en-gb"
+                                    role="button">
+                                    <i class="fab fa-instagram-square footer-icons" aria-hidden="true"></i>
+                                    <span class="sr-only">Instagram</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" rel="noreferrer" href="https://pinterest.com/?lang=en-gb"
+                                    role="button">
+                                    <i class="fab fa-pinterest-square footer-icons" aria-hidden="true"></i>
+                                    <span class="sr-only">Pinterest</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-        </div>
-    </footer>
+            <div class="footer-copyright">
+                <div class="container">
+                    © 2021 Copyright:
+                    <a class="copyright" href="#">ExPlanta.com</a>
+                </div>
+            </div>
+        </footer>
 
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-    {% block scripts %}
-    {% endblock %}
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+        {% block scripts %}
+        {% endblock %}
 
-</body>
+    </body>
 
 </html>

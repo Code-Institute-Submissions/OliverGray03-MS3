@@ -46,7 +46,7 @@ def get_recipe():
         if query != "":
             dbSearch["$text"] = {"$search": query}
             
-        if category_search != "":
+        if category_search is not None:
             dbSearch["category_name"] = category_search
 
         recipes = list(mongo.db.recipe_detail.find(dbSearch))
@@ -145,7 +145,7 @@ def register():
         flash("Registration Successful")
         return redirect(url_for("profile", username=session["user"]))
 
-    return render_template("register.html")
+    return render_template("register.html", backgroundimage = True)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -173,7 +173,7 @@ def login():
             flash("Incorrect Username and/or Password")
             return redirect(url_for("login"))
 
-    return render_template("login.html")
+    return render_template("login.html", backgroundimage = True)
 
 
 @app.route("/logout")
