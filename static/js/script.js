@@ -18,7 +18,7 @@ $(document).ready(function () {
         var clone = $("#ingredient-container_0").clone();
         var ingredientContainers = $(".ingredient-container");
         clone.attr("id", "ingredient-container_" + ingredientContainers.length);
-        clone.find("textarea").val("")
+        clone.find("textarea").val("");
         $("#ingredients-container").append(clone);
         $("#remove-ingredient").show();
     });
@@ -39,7 +39,7 @@ $(document).ready(function () {
         var clone = $("#method-container_0").clone();
         var methodContainers = $(".method-container");
         clone.attr("id", "method-container_" + methodContainers.length);
-        clone.find("textarea").val("")
+        clone.find("textarea").val("");
         $("#methods-container").append(clone);
         $("#remove-step").show();
     });
@@ -103,7 +103,7 @@ $(document).ready(function () {
 
         $("#delete-confirm").attr("href", url);
         $("#deleteModal").find("p").html(message);
-    })
+    });
 });
 
 

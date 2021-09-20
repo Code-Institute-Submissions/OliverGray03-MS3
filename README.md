@@ -1,8 +1,9 @@
 # Contents 
 
 # Ex Planta 
-![Website mock ups]()
-The live site can be viewed [here]
+![Website mock ups](static/images/explantamockup.png))
+
+The live site can be viewed [here](https://vegan-recipe-manager-ms3.herokuapp.com/)
 
 # UX
 ## Strategy
@@ -94,6 +95,12 @@ My wireframes were created using [Balsamiq](https://balsamiq.com) wireframes and
 - Tablet
 - [Desktop](https://olivergray03.github.io/MS3/wireframes/ExPlantaDesktopwireframes.pdf)
 
+## Database
+For the backend of the project i used MongoDb to store and retrieve all the data. This database was set up with 3 main collections:
+- Users. This collection stored all the user details, username, password firstname and saved recipes. 
+- Recipes. This collection contained all the details needed for the recipe cards, name, image, servings, method, ingredients etc. These were stored in a mix of arrays and strings. 
+- Categories. This collection stored the "meal type", Breakfast, Lunch or Dinner. 
+
 ## Design
 - I chose to go with a neutral mixed with predominantly green colour scheme as i felt this matched the "Vegan" philosophy of my target audience. The color scheme was inspired by [Coolers](https://coolors.co/palettes/trending/white,green,#3ca542) and is shown below:
 
@@ -171,11 +178,89 @@ Other
 
 ## Testing Performance
 
+- Best practices: 
+    - It was suggested "rel = noreferrer" was added to an external link to improve security, this was added. 
+    - It was suggested My H4 element on the home page be changed to H1 as it was skipped straight to H4. This was updated. 
+-SEO:
+    - It was suggested i add a meta description to imporve SEO, i added this to the base template. 
+
+Full lighthouse performance is shown below:
+- ![Lighthouse home performance](static/images/lighthouse-home-perf.png)
+- ![Lighthouse home accessibility](static/images/lighthouse-home-accs.png)
+- ![Lighthouse home seo](static/images/lighthouse-home-seo.png)
+- ![Lighthouse home best practices](static/images/lighthouse-home-best-prac.png)
+
 ## Testing Functionality
 
+- Basis
+    - Nav bar - All elements of the nav bar worked across all devices. 
+        - The nav bar logo returned to the home screen.
+    - Footer - All footer links directed to the correct external pages. 
+        - The footer link returned to the home screen.
+
+- Home
+    - The carousel worked across al devices as did the link for both logged in and non logged in users. 
+    - The external link as the selling point took me to the correct external page.
+    - The recipe cards button worked for both logged in and non logged in users. 
+    - The explore more button took me to the recipe page 
+
+- Recipe page
+    - The search bar worked on both a text search and recipe type search. 
+    - Both search buttons worked correctly including reset once a recipe had been searched. 
+    - The recipe cards button worked for both logged in and non logged in users. 
+
+- Recipe cards
+    - The full recipe button worked on the cards for both non logged in and logged in users. 
+    - The save button on the recipe cards worked and the recipe was saved to my profile.
+
+- login
+    - The login functionality worked as expected. 
+    - The link to register page worked as expected. 
+    - All validation worked on this page
+
+- register
+    - All fields worked as expected on this page and i registered a new account. 
+    - The validation on this page worked, including the password matching JS. 
+    - The link to login page worked as expected. 
+
+- Profile
+    - The profile table showed the correct data for username, saved recipes and created recipes. 
+    - All my created recipes were visable. 
+    - All my saved recipes were visable.
+    - The delete profile button worked, as did the security modal. 
+    - As a non admin user i am only able to edit/delete my own recipes. 
+    - As an admin user i can see, edit & delete all recipes. 
+    - Recipe Cards:
+        - The edit button took me to the correct page. 
+        - The delete button worked as did the added security modal.  
+        - The view recipe buttons worked. 
+        - The delete saved recipe form my saved recipe list also worked. 
+
+- Edit recipe
+    - The edit recipe button worked from my profile.
+    - The edit recipe produced the correct form with the recipes elements already in. 
+    - I was able to edit a recipe and update the database with the new information. 
+    - All validation worked on the form. 
+
+- Add recipe 
+    - The add recipe form allowed me to successfully create a new recipe and add it to the database. 
+    - All fields worked as did the validation. 
+    - The add/remove step/ingredient worked correctly. 
+    - The gluten free switch worked correctly. 
+
+- Log Out
+    - The log out functionality worked correctly and redirected to the login page
+
 ## Further Testing
+- The website was tested on Google Chrome, Internet Explorer, Microsoft Edge and Safari browsers
+- The website was veiwed on a variety of devices such as Desktop, laptop, iPhone 7 plus, iPhone X and iPad mini 4
+- The above testing showed no errors and the website is cross-browser and cross-device compatible
 
 # Code Validation
+- [responsinator](https://www.responsinator.com/) was used to check the responsiveness of the site across all devices and no errors were spotted
+- [W3C Markup validator](https://validator.w3.org/) was used to validate my code and no errors were found
+- [JsHint](https://jshint.com/) was used to validate my Javascript, 3 missing semi-colons were found and added to the code. 
+- [PEP8](http://pep8online.com/) was used to show any PEP8 compliance errors, some white space was found and removed. 
 
 # Deployment
 ## GitHub Pages

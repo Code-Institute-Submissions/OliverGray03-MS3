@@ -26,7 +26,7 @@ def home():
     carousel_recipes = list(
         mongo.db.recipe_detail.find({"created_by": "admin"}))
     random.shuffle(carousel_recipes)
-    
+
     recipes = list(mongo.db.recipe_detail.find())
 
     return render_template(
@@ -45,7 +45,7 @@ def get_recipe():
         dbSearch = {}
         if query != "":
             dbSearch["$text"] = {"$search": query}
-            
+
         if category_search is not None:
             dbSearch["category_name"] = category_search
 
@@ -87,7 +87,7 @@ def add_recipe():
         mongo.db.recipe_detail.insert_one(recipe)
         flash("Recipe Successfully Added")
         return redirect(url_for("get_recipe"))
-    
+
     categories = mongo.db.categories.find().sort("category_name", 1)
     difficulty = mongo.db.difficulty.find().sort("difficulty", 1)
     return render_template(
@@ -101,7 +101,7 @@ def full_recipe(recipe_id):
     if "user" not in session:
         flash("You must register to be able to view a recipe")
         return redirect(url_for("register"))
-        
+
     recipe = mongo.db.recipe_detail.find_one({"_id": ObjectId(recipe_id)})
 
     if recipe is None:
@@ -115,7 +115,6 @@ def full_recipe(recipe_id):
     else:
         flash("Please login to veiw the full recipe")
         return render_template(url_for("register"))
-
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -145,7 +144,7 @@ def register():
         flash("Registration Successful")
         return redirect(url_for("profile", username=session["user"]))
 
-    return render_template("register.html", backgroundimage = True)
+    return render_template("register.html", backgroundimage=True)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -158,10 +157,11 @@ def login():
         if existing_user:
             # ensure hashed password matches user input
             if check_password_hash(
-                existing_user["password"], request.form.get("password")):
-                    session["user"] = request.form.get("username").lower()
-                    flash("Welcome, {}".format(request.form.get("username")))
-                    return redirect(url_for(
+                    existing_user["password"], request.form.get("password")):
+
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome, {}".format(request.form.get("username")))
+                return redirect(url_for(
                     "profile", username=session["user"]))
             else:
                 # invalid password match
@@ -173,7 +173,7 @@ def login():
             flash("Incorrect Username and/or Password")
             return redirect(url_for("login"))
 
-    return render_template("login.html", backgroundimage = True)
+    return render_template("login.html", backgroundimage=True)
 
 
 @app.route("/logout")
@@ -202,7 +202,7 @@ def profile(username):
     if "saved_recipes" in currentUser:
         for recipe_id in currentUser["saved_recipes"]:
             recipe = mongo.db.recipe_detail.find_one(
-                {"_id":ObjectId(recipe_id)})
+                {"_id": ObjectId(recipe_id)})
             saved_recipes.append(recipe)
 
     if session["user"]:
@@ -234,11 +234,6 @@ def delete_recipe(recipe_id):
     created_by = recipe['created_by']
 
     if session["user"] == "admin" or created_by == session["user"]:
-
-        for recipes in saved_recipes:
-            mongo.db.users.update_many(
-                recipes, {"$pull": {"saved_recipes": ObjectId(recipe_id)}})
-
         mongo.db.recipe_detail.delete_one(recipe)
         flash("Recipe Successfully Deleted")
         return redirect(url_for("profile", username=session['user']))
@@ -275,7 +270,7 @@ def edit_recipe(recipe_id):
 
     categories = mongo.db.categories.find().sort("category_name", 1)
     difficulty = mongo.db.difficulty.find().sort("difficulty", 1)
- 
+
     if session["user"] == "admin" or created_by == session["user"]:
         return render_template(
             "edit_recipe.html",
@@ -287,13 +282,12 @@ def edit_recipe(recipe_id):
 @app.route("/save/<recipe_id>", methods=["POST"])
 def save_recipe(recipe_id):
     user = mongo.db.users.find_one({"username": session["user"]})
-    
 
     if "saved_recipes" in user:
         if recipe_id in user["saved_recipes"]:
             flash("Recipe already saved")
             return redirect(url_for("profile", username=session['user']))
-    
+
     mongo.db.users.update_one(
         user, {"$push": {"saved_recipes": recipe_id}})
     flash("Recipe saved to profile")
@@ -302,7 +296,7 @@ def save_recipe(recipe_id):
 
 @app.route("/remove/<recipe_id>", methods=["GET", "POST"])
 def delete_saved_recipe(recipe_id):
-    
+
     username = mongo.db.users.find_one({"username": session["user"]})
 
     mongo.db.users.update_one(
@@ -317,6 +311,5 @@ def not_found(e):
 
 
 if __name__ == "__main__":
-    app.run(host=os.environ.get("IP"),
-            port=int(os.environ.get("PORT")),
-            debug=False)
+    app.run(host=os.environ.get("IP"), port=int(
+        os.environ.get("PORT")), debug=False)
