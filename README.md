@@ -3,7 +3,7 @@
 # Ex Planta 
 ![Website mock ups](static/images/explantamockup.png)
 
-The live site can be viewed [here](https://vegan-recipe-manager-ms3.herokuapp.com/)
+The live site can be viewed [here](http://vegan-recipe-manager-ms3.herokuapp.com/)
 
 # UX
 ## Strategy
