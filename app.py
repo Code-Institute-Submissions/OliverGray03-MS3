@@ -260,7 +260,7 @@ def edit_recipe(recipe_id):
             "recipe_image": request.form.get("recipe_image"),
             "recipe_method": request.form.getlist("method"),
             "created_by": created_by,
-            "difficulty": request.form.getlist("difficulty"),
+            "difficulty": request.form.get("difficulty"),
             "cuisine": request.form.get("cuisine")
         }
 
