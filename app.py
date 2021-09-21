@@ -80,7 +80,7 @@ def add_recipe():
             "recipe_image": request.form.get("recipe_image"),
             "recipe_method": request.form.getlist("method"),
             "created_by": session["user"],
-            "difficulty": request.form.getlist("difficulty"),
+            "difficulty": request.form.get("difficulty"),
             "cuisine": request.form.get("cuisine")
         }
 
